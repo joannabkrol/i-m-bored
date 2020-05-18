@@ -1,0 +1,29 @@
+.NavigationItem {
+    display: block;
+    padding: 16px 0;
+}
+
+.NavigationItem a {
+    text-decoration: none;
+    color:  white;
+    padding: 10px;
+    font-weight: bold;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 2rem;
+}
+.NavigationItem a:hover,
+.NavigationItem a:active,
+.NavigationItem a.active {
+    color: lightblue;
+}
+
+@media (min-width: 500px) {
+    .NavigationItem {
+        display: flex;
+    }
+    .NavigationItem a {
+        color: white;
+        font-size: 1.3rem;
+    }
+}

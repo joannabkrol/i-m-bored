@@ -1,0 +1,38 @@
+.SideDrawer {
+    position: fixed;
+    width: 80%;
+    height: 100%;
+    background-color: #DD355E;
+    z-index: 100;
+    box-sizing: border-box;
+    padding: 32px 16px;
+    left: 0;
+    top: 0;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 500px) {
+    .SideDrawer {
+        display: none;
+    }
+}
+
+.Open {
+    transform: translateX(0);
+}
+
+.Close {
+    transform: translateX(-100%);
+}
+
+.Logo {
+    justify-content: center;
+    display: flex;
+}
+.CloseButton {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+}

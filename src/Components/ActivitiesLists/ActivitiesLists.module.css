@@ -1,0 +1,25 @@
+.ActivityList {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+}
+.Header {
+    text-align: center;
+    font-size: 2rem;
+}
+
+@media (min-width: 500px) {
+    .ActivityList {
+        display: flex;
+        width: 70%;
+        flex-wrap: wrap;
+        margin: auto;
+    }
+}
+
+@media (min-width: 1500px) {
+    .ActivityList {
+        flex-grow: 1;
+    }
+}

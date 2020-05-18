@@ -1,0 +1,24 @@
+.Header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #DD355E;
+    height: 50px;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.3rem;
+    z-index: 50;
+}
+.Content {
+    margin-top: 80px;
+}
+
+@media (max-width: 500px) {
+    .DesktopOnly {
+        display: none;
+    }
+}

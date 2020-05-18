@@ -1,0 +1,14 @@
+.Conversation {
+    margin: 50px auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    max-width: 1000px;
+    width: 95%;
+}
+
+@media (min-width: 500px) {
+    .Conversation {
+        width: 80%;
+    }
+}

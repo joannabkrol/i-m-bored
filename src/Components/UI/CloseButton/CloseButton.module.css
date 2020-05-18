@@ -1,0 +1,26 @@
+
+.CloseButton {
+    width: 32px;
+    height: 32px;
+    opacity: 0.8;
+    position: absolute;
+    }
+.CloseButton:hover {
+    opacity: 1;
+    color: lightblue;
+    }
+.CloseButton:before, .CloseButton:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 3px;
+    background-color: white;
+    }
+.CloseButton:before {
+    transform: rotate(45deg);
+    }
+.CloseButton:after {
+    transform: rotate(-45deg);
+    }
+    

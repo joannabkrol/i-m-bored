@@ -1,0 +1,25 @@
+.CategoryItem {
+    width:  160px;
+    height: auto;
+    box-shadow: 1px 2px 2px 1px grey;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 18% 2% 10% 2%;
+    margin: 2% 2% 4% 2%;
+    cursor: pointer;
+}
+
+.CategoryItem:hover {
+    background-color: #DD355E;
+    color: white;
+}
+
+@media (min-width: 500px) {
+    .CategoryItem {
+        width:  200px;
+        height: auto;
+        margin: 10px;
+        padding: 10% 2% 10% 2%;
+    }
+}

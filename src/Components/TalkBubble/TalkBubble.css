@@ -1,0 +1,43 @@
+.talkBubble {
+    margin: 20px;
+    display: inline-block;
+    position: relative;
+    width: 200px;
+    height: auto;
+    background-color: white;
+    color: #DD355E;
+    border-radius: 15px 15px 0px 15px;
+    box-shadow: 1px 2px 2px 1px grey;
+    border: 1px solid lightgrey;
+    min-width: 50%;
+
+}
+
+.hover {
+    background-color: #DD355E;
+    color: white;
+}
+.talkBubble p {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.talkBubble.right {
+    align-self: flex-end;
+    border-radius: 15px 15px 0px 15px;
+  }
+
+.talkBubble.left {
+    align-self: flex-start;
+    border-radius: 15px 15px 15px 0px;
+}
+.talkBubble.big {
+    height: 200px;
+    width: 70%;
+}
+.secondary {
+    background-color: #DD355E;
+    color: white;
+}
