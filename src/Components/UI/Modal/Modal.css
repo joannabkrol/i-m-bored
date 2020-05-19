@@ -1,0 +1,27 @@
+.modal {
+    width: 70%;
+    height: 70%;
+    margin: auto;
+    position: fixed;
+    z-index: 200;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 1px 2px 2px 1px grey;
+    max-width: 700px;
+    right: 0;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 10%;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+}
+.modal.success {
+    background-color: #DD355E;
+    color: white;
+}
+
+.modal.fail {
+    background-color: white;
+    color: #DD355E;
+}
