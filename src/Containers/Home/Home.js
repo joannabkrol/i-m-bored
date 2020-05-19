@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 
-import TalkBubble from '../../Components/TalkBubble/TalkBubble';
-import TalkBubbleLeft from '../../Components/TalkBubble/TalkBubbleLeft/TalkBubbleLeft';
-import TalkBubbleRight from '../../Components/TalkBubble/TalkBubbleRight/TalkBubbleRight';
+import TalkBubble from '../../Components/UI/TalkBubble/TalkBubble';
 import Button from '../../Components/UI/Button/Button';
 //import Spinner from '../../Components/UI/Spinner/Spinner';
 import classes from './Home.module.css';
