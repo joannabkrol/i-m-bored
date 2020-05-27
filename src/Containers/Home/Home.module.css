@@ -5,10 +5,39 @@
     justify-content: center;
     max-width: 1000px;
     width: 95%;
+    background-color: #0F2546;
 }
 
 @media (min-width: 500px) {
     .Conversation {
         width: 80%;
     }
+}
+.GraphicRight {
+    position: fixed;
+    z-index: -1;
+    width: 15%;
+    right: 0;
+    bottom: 50%;
+}
+.GraphicLeft {
+    position: fixed;
+    z-index: -1;
+    left: 0;
+    bottom: 0;
+    width: 40%;
+}
+.GraphicRightBottom {
+    position: fixed;
+    z-index: -1;
+    right: 0;
+    bottom: 0;
+    width: 30%;
+}
+.GraphicCentreBottom {
+    position: fixed;
+    z-index: -1;
+    right: 35%;
+    bottom: 0;
+    width: 30%;
 }

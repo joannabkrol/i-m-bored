@@ -6,6 +6,12 @@ import Button from '../../Components/UI/Button/Button';
 import Modal from '../../Components/UI/Modal/Modal';
 import classes from './Home.module.css';
 
+//graphic elements:
+import leaves from '../../assets/SVG/Asset 1.svg';
+import LeftTriangle from '../../assets/SVG/Asset 5.svg';
+import RightTriangle from '../../assets/SVG/Asset 4.svg';
+import CentreTriangle from '../../assets/SVG/Asset 3.svg';
+
 const activities = [
     { label: 'Read a book', category: 'home' },
     { label: 'Paint a tree', category: 'home' },
@@ -74,49 +80,61 @@ class Home extends Component {
     render () {
         return (
             <React.Fragment>
+                <img className={classes.GraphicRight} src={leaves} alt="leaves shape" />
+                <img className={classes.GraphicLeft} src={LeftTriangle} alt="green triangle shape" />
+                <img className={classes.GraphicRightBottom} src={RightTriangle} alt="yellow triangle shape" />
+                <img className={classes.GraphicCentreBottom} src={CentreTriangle} alt="yellow triangle shape" />
                 <Modal
                     show={this.state.showSuccessModal}
                     hideModal={this.hideSuccessModalHandler}
-                    modalType="success"
+                    modalType="white"
                     >
-                    This is success Modal.
-                    <br></br>
-                    Your random activity is: <br></br>
-                    {this.state.randomActivity.label}<br></br>
-                    Enjoy! <br></br>
+                    Your challenge is: <br></br><br></br>
+                    <p><strong>{this.state.randomActivity.label}</strong></p><br></br>
+                    <p style={{fontSize: '1rem'}}>Tag us on social media:<br></br>
+                    <i>#imbored #imboredchallenge</i> <br></br><br></br>
                     Share your challenge at: <br></br>
-                    FB, Insta, Twitter,
+                    Facebook, Instagram, Twitter or wherever you like</p>
+                    
                 </Modal>
                 <Modal
                     show={this.state.showFailModal}
                     hideModal={this.hideFailModalHandler}
-                    modalType="fail"
+                    modalType="white"
                     >
                     <p style={{marginBottom: '20%'}}>Find more activities in our Catalog:</p>
-                    <Button clicked={this.goToCatalogHandler}>Go to Catalog</Button>
-                    <Button clicked={() => window.location.reload(false)}>Try again</Button>
+                    <Button size="primary" colorType="yellow" clicked={this.goToCatalogHandler}>Go to Catalog</Button>
+                    <Button size="primary"  colorType="yellow" clicked={() => window.location.reload(false)}>Try again</Button>
                 </Modal>
                 <div className={classes.Conversation}>
-                    <TalkBubble position="left">I'm bored</TalkBubble>
-                    <TalkBubble position="right">Then do something!</TalkBubble>
+                    <TalkBubble position="left" colorType="primary">I'm bored!!!</TalkBubble>
+                    <TalkBubble position="right" colorType="secondary">Then do something!</TalkBubble>
                     <div style={{display: 'flex', justifyContent: 'space-evenly', marginTop: '20px'}}>
                         <Button 
+                            size="primary"
+                            colorType="yellow"
                             clicked={this.showRandomActivityHandler}
                             >Click here for random activity</Button>
                         <Button
+                            size="primary"
+                            colorType="yellow"
                             clicked={this.goToCatalogHandler}
                         >Click here to see catalog of activities</Button>
                     </div>  
                     {this.state.showActivity ? 
                         <React.Fragment>
-                            <TalkBubble position="right">Activity for you is:</TalkBubble>
+                            <TalkBubble position="right" colorType="secondary">Activity for you is:</TalkBubble>
                             <TalkBubble position="right" size="big" colorType="secondary">
                                 <span>{this.state.randomActivity.label}</span><br></br>
                                 Category: {this.state.randomActivity.category}
                             </TalkBubble>
                             <div style={{display: 'flex'}}>
-                                <Button clicked={this.showFailModalHandler}>I don't like it.</Button>
-                                <Button clicked={this.showSuccessModalHandler}> Yeah, good idea.</Button>
+                                <Button colorType="yellow" size="primary" clicked={this.showFailModalHandler}>
+                                    I don't like it.
+                                </Button>
+                                <Button colorType="yellow" size="primary" clicked={this.showSuccessModalHandler}> 
+                                    Yeah, good idea.
+                                </Button>
                             </div>
                         </React.Fragment>
                     : null}

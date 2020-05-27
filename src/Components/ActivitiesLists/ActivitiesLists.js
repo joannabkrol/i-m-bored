@@ -14,20 +14,34 @@ const activities = [
     { label: 'Take a walk', category: 'outside' },
 ];
 
+
 class ActivitiesLists extends Component {
+    
+
     render () {
+        
+        
         return (
             <Aux>
                 {this.props.selectedCategory ? 
                 (<div className={classes.Header}>
                     <p>
-                        Activities: {this.props.selectedCategory}
+                        Activities: {Array.isArray(this.props.selectedCategory) ? 'All' : this.props.selectedCategory }
                     </p>
                 </div>) : null
                 }
 
                 <div className={classes.ActivityList}>
+
                 {activities.map((activity, i) => {
+                    if(Array.isArray(this.props.selectedCategory)) {
+                        return (
+                            <ActivityItem 
+                        key={i}
+                        label={activity.label}
+                    />
+                        )
+                    } 
                     if (activity.category === this.props.selectedCategory)
                     {
                         return (
@@ -37,7 +51,8 @@ class ActivitiesLists extends Component {
                     />
                         )
                     }
-                })}      
+                })}
+                    
                 </div>
             </Aux>            
         )
