@@ -16,7 +16,7 @@ const sideDrawer = (props) => {
             <div className={activeClasses.join(' ')}>
                 <div className={classes.Logo}>Logo</div>
                 <nav>
-                    <NavigationItems />
+                    <NavigationItems clicked={props.close}/>
                 </nav>
                 <div className={classes.CloseButton}>
                 <CloseButton clicked={props.close}/>
