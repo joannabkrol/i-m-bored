@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Aux from '../../Hoc/Aux/Aux';
 import ActivitiesLists from '../../Components/ActivitiesLists/ActivitiesLists';
 import CategoryItem from '../../Components/CategoryItem/CategoryItem';
 import classes from './CategoriesLists.module.css';
@@ -34,7 +33,7 @@ class CategoriesList extends Component {
 
     render () {
         return (
-            <Aux>
+            <React.Fragment>
                 <img className={classes.GraphicLeft} src={LeftTriangle} alt="green triangle shape" />
                 <div className={classes.Header}>Welcome to the biggest catalog of <br></br>activities of all kinds</div>
                 <Button position="center" size="smallLong" colorType="yellow" clicked={this.handleSelectAll}>See all</Button>
@@ -48,7 +47,7 @@ class CategoriesList extends Component {
                     ref={(el) => { this.messagesEnd = el; }}>  
                 </div> 
                 <ActivitiesLists selectedCategory={this.state.selectedCategory} />    
-            </Aux>
+            </React.Fragment>
         )
     }
 }

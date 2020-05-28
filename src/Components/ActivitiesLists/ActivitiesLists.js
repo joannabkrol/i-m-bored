@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Aux from '../../Hoc/Aux/Aux';
 import ActivityItem from './ActivityItem/ActivityItem';
 import classes from './ActivitiesLists.module.css';
 
@@ -22,7 +21,7 @@ class ActivitiesLists extends Component {
         
         
         return (
-            <Aux>
+            <React.Fragment>
                 {this.props.selectedCategory ? 
                 (<div className={classes.Header}>
                     <p>
@@ -54,7 +53,7 @@ class ActivitiesLists extends Component {
                 })}
                     
                 </div>
-            </Aux>            
+            </React.Fragment>            
         )
     }
 }
