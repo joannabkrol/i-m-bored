@@ -7,7 +7,7 @@ import Button from '../../Components/UI/Button/Button';
 //graphic elements:
 import LeftTriangle from '../../assets/SVG/Asset 5.svg';
 
-const categories = ["home", "outside"];
+const categories = ["Sport", "Outdoors", "Garden", "Travel", "At kitchen", "At home", "Handy crafts", "Games", "Skills"];
 
 class CategoriesList extends Component {
     state = {
