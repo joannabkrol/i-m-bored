@@ -24,18 +24,6 @@ class Home extends Component {
         randomActivity: { label: '', category: '' },
     }
       
-    //componentDidMount() {
-    //this.scrollToBottom();
-    //}
-    /*
-    componentDidUpdate() {
-    this.scrollToBottom();
-    }
-
-    scrollToBottom = () => {
-        this.messagesEnd.scrollIntoView({ behavior: "smooth" });
-      }
-*/
     goToCatalogHandler = () => {
         this.props.history.push({
             pathname: '/catalog',
@@ -52,22 +40,7 @@ class Home extends Component {
             showSuccessModal: false
         })
     }
-    showFailModalHandler = () => {
-        this.setState({
-            showFailModal: true,
-        })
-    }
-    hideFailModalHandler = () => {
-        this.setState({
-            showFailModal: false,
-        })
-    }
-    showRandomActivityHandler = () => {
-        this.setState({
-            showActivity: true,
-            randomActivity: activities[random]
-        }, () => this.scrollToBottom());
-    }
+
 
     render () {
         return (
@@ -93,15 +66,7 @@ class Home extends Component {
                     </div>
 
                 </Modal>
-                <Modal
-                    show={this.state.showFailModal}
-                    hideModal={this.hideFailModalHandler}
-                    modalType="white"
-                    >
-                    <p style={{marginBottom: '20%'}}>Find more activities in our Catalog:</p>
-                    <Button size="primary" colorType="yellow" clicked={this.goToCatalogHandler}>Go to Catalog</Button>
-                    <Button size="primary"  colorType="yellow" clicked={() => window.location.reload(false)}>Try again</Button>
-                </Modal>
+                
                 <div className={classes.Conversation}>
                     <TalkBubble position="left" colorType="primary">I'm bored!!!</TalkBubble>
                     <TalkBubble position="right" colorType="secondary">Then do something!</TalkBubble>

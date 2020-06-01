@@ -44,10 +44,11 @@
 }
 /* position*/
 .Button.center {
-    margin: auto;
+    margin: 20px auto;
     text-align: center;
     margin-top: 2%;
     padding-top: 2%;
+    width: 50%;
 }
 /*size*/
 .Button.smallLong {
