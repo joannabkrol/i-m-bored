@@ -70,10 +70,10 @@ const random = Math.floor(Math.random() * Math.floor(activities.length));
 
 class Home extends Component {
     state = {
-        showActivity: false,
+        //showActivity: false,
         showSuccessModal: false,
         showFailModal: false,
-        randomActivity: { label: 'Test', category: 'test' },
+        randomActivity: { label: '', category: '' },
     }
       
     //componentDidMount() {
@@ -83,11 +83,11 @@ class Home extends Component {
     componentDidUpdate() {
     this.scrollToBottom();
     }
-*/
+
     scrollToBottom = () => {
         this.messagesEnd.scrollIntoView({ behavior: "smooth" });
       }
-
+*/
     goToCatalogHandler = () => {
         this.props.history.push({
             pathname: '/catalog',
@@ -96,6 +96,7 @@ class Home extends Component {
     showSuccessModalHandler = () => {
         this.setState({
             showSuccessModal: true,
+            randomActivity: activities[random]
         })
     }
     hideSuccessModalHandler = () => {
@@ -138,7 +139,11 @@ class Home extends Component {
                     <i>#imbored #imboredchallenge</i> <br></br><br></br>
                     Share your challenge at: <br></br>
                     Facebook, Instagram, Twitter or wherever you like</p>
-                    
+                    <div style={{display: 'flex', justifyContent: 'space-evenly', marginTop: '30px'}}>
+                    <Button size="small" colorType="whitep" clicked={this.goToCatalogHandler}>Go to Catalog</Button>
+                    <Button size="small"  colorType="whitep" clicked={() => window.location.reload(false)}>Try again</Button>
+                    </div>
+
                 </Modal>
                 <Modal
                     show={this.state.showFailModal}
@@ -156,36 +161,17 @@ class Home extends Component {
                         <Button 
                             size="primary"
                             colorType="yellow"
-                            clicked={this.showRandomActivityHandler}
+                            clicked={this.showSuccessModalHandler}
                             >Click here to see a challenge for you</Button>
                         <Button
                             size="primary"
                             colorType="yellow"
                             clicked={this.goToCatalogHandler}
                         >Click here to see catalog of challenges</Button>
-                    </div>  
-                    {this.state.showActivity ? 
-                        <React.Fragment>
-                            <TalkBubble position="right" colorType="secondary">Challenge for you is:</TalkBubble>
-                            <TalkBubble position="right" size="big" colorType="secondary">
-                                <p style={{fontSize: "2rem", margin: "0"}}>{this.state.randomActivity.label}</p>
-                                Category: {this.state.randomActivity.category}
-                            </TalkBubble>
-                            <div style={{display: 'flex'}}>
-                                <Button colorType="yellow" size="primary" clicked={this.showFailModalHandler}>
-                                    I don't like it.
-                                </Button>
-                                <Button colorType="yellow" size="primary" clicked={this.showSuccessModalHandler}> 
-                                    Yeah, good idea.
-                                </Button>
-                            </div>
-                        </React.Fragment>
-                    : null}
-                    <div style={{ float:"left", clear: "both" }}
-                    ref={(el) => { this.messagesEnd = el; }}></div>
-                </div>
+                    </div> 
+                 </div>
             </React.Fragment>
         )
     }
 }
-export default Home
+export default Home;

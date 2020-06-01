@@ -12,7 +12,7 @@
 
 }
 
-.Button:hover, .Button.yellow:hover {
+.Button:hover, .Button.yellow:hover, .Button.white:hover, .Button.whitep:hover {
     background-color: #DD355E;
     color: white;
 }
@@ -29,6 +29,10 @@
 .Button.white {
     background-color: white;
     color: #0F2546;
+}
+.Button.whitep {
+    background-color: white;
+    color: #DD355E;
 }
 .Button.yellow {
     background-color: #EED23C;
@@ -52,4 +56,7 @@
 }
 .Button.primary {
     padding: 10% 10% 10% 10%;
+}
+.Button.small {
+    padding: 2% 10% 2% 10%;
 }
