@@ -1,0 +1,65 @@
+.Auth {
+    width: 90%;
+    margin: 20px auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+.Form {
+    background-color: white;
+    border-radius: 10px;
+}
+.Form h2 {
+    color: #0F2546;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+.Input {
+    display: block;
+    margin: auto;
+}
+.SwitchToSignUp {
+    background-color: white;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 10px;
+    height: 200px;
+}
+.textContainer {
+    padding: 10% 0;
+}
+.SwitchToSignUp p {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0F2546;
+}
+@media (min-width: 600px) {
+    .Auth {
+        width: 70%;
+        flex-direction: row;
+    }
+    .Form {
+        width: 50%;
+        height: 50vh;
+        margin: 10px;
+    }
+    .SwitchToSignUp {
+        background-color: white;
+        border-radius: 10px;
+        width: 50%;
+        height: 50vh;
+        margin: 10px;
+    }
+    .textContainer {
+        padding: 40% 0;
+    }
+    .SwitchToSignUp p {
+        text-align: center;
+        padding: 20px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #0F2546;
+    }
+}

@@ -5,6 +5,7 @@ import Layout from '../Layout/Layout';
 import Home from '../../Containers/Home/Home';
 import PageNotFound from '../../Containers/404 page/404page';
 import Auth from '../../Containers/Auth/Auth';
+import AuthLogIn from '../../Containers/AuthLogIn/AuthLogIn';
 import {Switch, Route} from 'react-router-dom';
 
 
@@ -16,7 +17,8 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home}/>
           <Route path="/catalog" exact component={CategoriesLists}/>
-          <Route path="/auth" exact component={Auth}/>
+          <Route path="/login" exact component={AuthLogIn}/>
+          <Route path="/signup" exact component={Auth}/>
           <Route component={PageNotFound}/>
         </Switch>
      </Layout>

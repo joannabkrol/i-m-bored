@@ -1,0 +1,24 @@
+
+.Form {
+    background-color: #EED23C;
+    border-radius: 10px;
+    width: 100%;
+    height: 50vh;
+}
+.Form h2 {
+    color: #0F2546;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+.Input {
+    display: block;
+    margin: auto;
+}
+
+@media (min-width: 600px) {
+    .Form {
+        width: 100%;
+        height: 50vh;
+    }
+}

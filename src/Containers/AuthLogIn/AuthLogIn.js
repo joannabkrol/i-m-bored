@@ -3,7 +3,11 @@ import React, {Component} from 'react';
 import Input from '../../Components/UI/Input/Input';
 import Button from '../../Components/UI/Button/Button';
 
-import classes from './Auth.module.css';
+import classes from './AuthLogIn.module.css';
+import * as actions from '../../store/actions/index';
+import {connect} from 'react-redux';
+
+import SignUp from '../../Components/Signup/Signup';
 
 class Auth extends Component {
     state = {
@@ -36,7 +40,8 @@ class Auth extends Component {
                 valid: false,
                 touched: false
             },
-        }
+        },
+        showSignup: false,
     }
     checkValidity(val, rules) {
         let isValid = true;
@@ -71,9 +76,14 @@ class Auth extends Component {
         this.setState({controls: updatedControls});
     }
 
-    submitHandler = (event) => {
+    submitSignInHandler = (event) => {
         event.preventDefault();
         //here will be redux dispatch method
+        this.props.onAuthSignIn(this.state.controls.mail.value, this.state.controls.password.value, this.state.isSignup);
+    }
+
+    showSignupHandler = () => {
+        this.setState({showSignup: true})
     }
 
     render(){
@@ -100,12 +110,30 @@ class Auth extends Component {
 
         return(
             <div className={classes.Auth}>
-                <form onSubmit={this.submitHandler}>
-                    {form}
-                    <Button colorType="white" size="small" position="center">SUBMIT</Button>
-                </form>
+                <div className={classes.Form}>
+                    <h2>SIGN IN</h2>
+                    <form>
+                        {form}
+                        <Button 
+                            colorType="white" size="small" position="center"
+                            clicked={this.submitSignInHandler}
+                        >SUBMIT</Button>
+                    </form>
+                </div>
+                <div className={classes.SwitchToSignUp} onClick={this.showSignupHandler}>
+                    {this.state.showSignup ? <SignUp/> 
+                    : <div className={classes.textContainer}><p>
+                    Click here to sign up
+                    </p></div>}
+                </div>
             </div>
         );
     }
 }
-export default Auth;
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuthSignIn: (email, password) => dispatch(actions.authSignIn(email, password)),
+    }
+}
+export default connect(null, mapDispatchToProps)(Auth);
