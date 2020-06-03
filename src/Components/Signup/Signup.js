@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import Input from '../../Components/UI/Input/Input';
 import Button from '../../Components/UI/Button/Button';
+import Spinner from '../../Components/UI/Spinner/Spinner';
 
 import classes from './Signup.module.css';
 import * as actions from '../../store/actions/index';
@@ -87,7 +88,8 @@ class Auth extends Component {
                 config: this.state.controls[key]
             });
         }
-        const form = formElementsArray.map(formElement => (
+        let formSignUp = formElementsArray.map(formElement => (
+
             <Input
                 key={formElement.id}
                 elementType={formElement.config.elementType}
@@ -100,25 +102,41 @@ class Auth extends Component {
                 changed={(event) =>this.inputChangedHandler(event, formElement.id)}
             />
         ))
-
+        if (this.props.loading) {
+            formSignUp = <Spinner/>
+        }
+        /*
+        let errorMessage = null;
+        if (this.props.error) {
+            errorMessage = (
+                <p>{this.props.error.message}</p>
+            )
+        }
+        */
         return(
-                <div className={classes.Form}>
-                    <h2>SIGN UP</h2>
-                    <form>
-                        {form}
-                        <Button 
-                            colorType="white" size="small" position="center"
-                            clicked={this.submitSignUpHandler}
-                        >SUBMIT</Button>
-                    </form>
-                </div>
+                    <div className={classes.Form}>
+                        <h2>SIGN UP</h2>
+                        <form>
+                            {formSignUp}
+                            <Button 
+                                colorType="white" size="small" position="center"
+                                clicked={this.submitSignUpHandler}
+                            >SUBMIT</Button>
+                        </form>
+                    </div>
+                
         );
     }
 }
-
+const mapStateToProps = state => {
+    return {
+        loading: state.auth.loadingSignup,
+        error: state.auth.error
+    }
+}
 const mapDispatchToProps = dispatch => {
     return {
         onAuthSignUp: (email, password) => dispatch(actions.authSignUp(email, password)),
     }
 }
-export default connect(null, mapDispatchToProps)(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

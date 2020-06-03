@@ -1,6 +1,28 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
 
+//sign in:
+export const authStartSignIn = () => {
+    return {
+        type: actionTypes.SIGNIN_START
+    }
+}
+
+export const authSuccessSignIn = (token, userId) => {
+    return {
+        type: actionTypes.SIGNIN_SUCCESS,
+        idToken: token,
+        userId: userId,
+    }
+}
+
+export const authFailSignIn = (error) => {
+    return {
+        type: actionTypes.SIGNIN_FAIL,
+        error: error
+    }
+}
+//sign up:
 export const authStart = () => {
     return {
         type: actionTypes.AUTH_START
@@ -22,6 +44,21 @@ export const authFail = (error) => {
     }
 }
 
+//logout:
+export const logout = () => {
+    return {
+        type: actionTypes.AUTH_LOGOUT
+    };
+};
+
+export const checkAuthTimeout = (expirationTime) => {
+    return dispatch => {
+        setTimeout(() => {
+            dispatch(logout());
+        }, expirationTime * 1000)
+    }
+}
+
 //async:
 export const authSignUp = (email, password, isSignup) => {
     return dispatch => {
@@ -36,17 +73,18 @@ export const authSignUp = (email, password, isSignup) => {
         .then(response => {
             console.log(response);
             dispatch(authSuccess(response.data.idToken, response.data.localId));
+            dispatch(checkAuthTimeout(response.data.expiresIn));
         })
         .catch(err => {
             console.log(err);
-            dispatch(authFail(err));
+            dispatch(authFail(err.response.data.error));
         })
     }
 }
 
 export const authSignIn = (email, password) => {
     return dispatch => {
-        dispatch(authStart());
+        dispatch(authStartSignIn());
         const authData = {
             email: email,
             password: password,
@@ -56,11 +94,12 @@ export const authSignIn = (email, password) => {
         axios.post(url, authData)
         .then(response => {
             console.log(response);
-            dispatch(authSuccess(response.data.idToken, response.data.localId));
+            dispatch(authSuccessSignIn(response.data.idToken, response.data.localId));
+            dispatch(checkAuthTimeout(response.data.expiresIn));
         })
         .catch(err => {
             console.log(err);
-            dispatch(authFail(err));
+            dispatch(authFailSignIn(err.response.data.error));
         })
     }
 }

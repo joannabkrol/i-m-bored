@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import Input from '../../Components/UI/Input/Input';
 import Button from '../../Components/UI/Button/Button';
+import Spinner from '../../Components/UI/Spinner/Spinner';
 
 import classes from './AuthLogIn.module.css';
 import * as actions from '../../store/actions/index';
@@ -94,7 +95,7 @@ class Auth extends Component {
                 config: this.state.controls[key]
             });
         }
-        const form = formElementsArray.map(formElement => (
+        let form = formElementsArray.map(formElement => (
             <Input
                 key={formElement.id}
                 elementType={formElement.config.elementType}
@@ -107,27 +108,45 @@ class Auth extends Component {
                 changed={(event) =>this.inputChangedHandler(event, formElement.id)}
             />
         ))
+        if (this.props.loading) {
+            form = <Spinner/>
+        }
+        let errorMessage = null;
+        if (this.props.error) {
+            errorMessage = (
+                <div className={classes.ErrorMsg}><p>{this.props.error.message}</p></div>
+            )
+        }
 
-        return(
-            <div className={classes.Auth}>
-                <div className={classes.Form}>
-                    <h2>SIGN IN</h2>
-                    <form>
-                        {form}
-                        <Button 
-                            colorType="white" size="small" position="center"
-                            clicked={this.submitSignInHandler}
-                        >SUBMIT</Button>
-                    </form>
+        return(<React.Fragment>
+                {errorMessage}
+                <div className={classes.Auth}>
+                        <div className={classes.Form}>
+                            <h2>SIGN IN</h2>
+                            <form>
+                                {form}
+                                <Button 
+                                    colorType="white" size="small" position="center"
+                                    clicked={this.submitSignInHandler}
+                                >SUBMIT</Button>
+                            </form>
+                        </div>
+                        <div className={classes.SwitchToSignUp} onClick={this.showSignupHandler}>
+                            {this.state.showSignup ? <SignUp/> 
+                            : <div className={classes.textContainer}><h2>
+                            Click here to sign up
+                            </h2></div>}
+                        </div>
+                    
                 </div>
-                <div className={classes.SwitchToSignUp} onClick={this.showSignupHandler}>
-                    {this.state.showSignup ? <SignUp/> 
-                    : <div className={classes.textContainer}><p>
-                    Click here to sign up
-                    </p></div>}
-                </div>
-            </div>
+            </React.Fragment>
         );
+    }
+}
+const mapStateToProps = state => {
+    return {
+        loading: state.auth.loadingSignin,
+        error: state.auth.error
     }
 }
 
@@ -136,4 +155,4 @@ const mapDispatchToProps = dispatch => {
         onAuthSignIn: (email, password) => dispatch(actions.authSignIn(email, password)),
     }
 }
-export default connect(null, mapDispatchToProps)(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

@@ -6,7 +6,8 @@ const navigationItems = (props) => (
     <ul className={classes.NavigationItems}>
         <NavigationItem link="/" clicked={props.clicked} exact>Home</NavigationItem>
         <NavigationItem link="/catalog" clicked={props.clicked}>Catalog</NavigationItem>
-        <NavigationItem link="/login" clicked={props.clicked}>Log in</NavigationItem>
+        {props.isAuthenticated ? <NavigationItem link="/logout" clicked={props.clicked}>Log out</NavigationItem>
+        :<NavigationItem link="/signin" clicked={props.clicked}>Sign in</NavigationItem>}
     </ul>
 );
 

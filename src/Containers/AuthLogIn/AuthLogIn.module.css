@@ -4,6 +4,16 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    
+}
+.ErrorMsg {
+    width: 90%;
+    margin: 20px auto;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    color: red;
 }
 .Form {
     background-color: white;
@@ -26,19 +36,21 @@
     margin-top: 10px;
     height: 200px;
 }
+.SwitchToSignUp h2 {
+    text-align: center;
+    color: #0F2546;
+}
 .textContainer {
     padding: 10% 0;
 }
-.SwitchToSignUp p {
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #0F2546;
-}
+
 @media (min-width: 600px) {
     .Auth {
         width: 70%;
         flex-direction: row;
+    }
+    .ErrorMsg {
+        width: 70%;
     }
     .Form {
         width: 50%;
@@ -54,12 +66,5 @@
     }
     .textContainer {
         padding: 40% 0;
-    }
-    .SwitchToSignUp p {
-        text-align: center;
-        padding: 20px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #0F2546;
     }
 }

@@ -10,7 +10,9 @@ const Navigation = (props) => {
                     Logo
                 </div>
                 <nav className={classes.DesktopOnly}>
-                    <NavigationItems />
+                    <NavigationItems 
+                        isAuthenticated={props.isAuth}
+                    />
                 </nav>
                 <Hamburger clicked={props.toggleSideDrawer}/>
             </header>
