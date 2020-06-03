@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
 import Input from '../../Components/UI/Input/Input';
 import Button from '../../Components/UI/Button/Button';
@@ -6,7 +8,7 @@ import Spinner from '../../Components/UI/Spinner/Spinner';
 
 import classes from './AuthLogIn.module.css';
 import * as actions from '../../store/actions/index';
-import {connect} from 'react-redux';
+
 
 import SignUp from '../../Components/Signup/Signup';
 
@@ -117,8 +119,13 @@ class Auth extends Component {
                 <div className={classes.ErrorMsg}><p>{this.props.error.message}</p></div>
             )
         }
+        let authRedirect = null;
+        if (this.props.isAuth) {
+            authRedirect = <Redirect to="/" />
+        }
 
         return(<React.Fragment>
+                {authRedirect}
                 {errorMessage}
                 <div className={classes.Auth}>
                         <div className={classes.Form}>
@@ -146,7 +153,8 @@ class Auth extends Component {
 const mapStateToProps = state => {
     return {
         loading: state.auth.loadingSignin,
-        error: state.auth.error
+        error: state.auth.error,
+        isAuth: state.auth.token !== null,
     }
 }
 
