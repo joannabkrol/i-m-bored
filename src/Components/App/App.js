@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import CategoriesLists from '../../Containers/CategoriesLists/CategoriesLists';
 import Layout from '../Layout/Layout';
@@ -8,26 +8,42 @@ import Signup from '../../Components/Signup/Signup';
 import AuthLogIn from '../../Containers/AuthLogIn/AuthLogIn';
 import Logout from '../../Containers/AuthLogIn/Logout/Logout';
 
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
+
+import * as actions from '../../store/actions/index';
 
 
 
-function App() {
-  return (
-    <div>
-     <Layout>
-        <Switch>
-          <Route path="/" exact component={Home}/>
-          <Route path="/catalog" exact component={CategoriesLists}/>
-          <Route path="/signin" exact component={AuthLogIn}/>
-          <Route path="/signup" exact component={Signup}/>
-          <Route path="/logout" exact component={Logout}/>
-          <Route component={PageNotFound}/>
-        </Switch>
-     </Layout>
-      
-    </div>
-  );
+class App extends Component {
+  componentDidMount() {
+    this.props.onTryAutoSignup();
+  }
+
+  render() {
+    return (
+      <div>
+       <Layout>
+          <Switch>
+            <Route path="/catalog" component={CategoriesLists}/>
+            <Route path="/signin" component={AuthLogIn}/>
+            <Route path="/signup" component={Signup}/>
+            <Route path="/logout" component={Logout}/>
+            <Route path="/" exact component={Home}/>
+            <Route component={PageNotFound}/>
+          </Switch>
+       </Layout>
+        
+      </div>
+    );
+  }
+  
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    onTryAutoSignup: () => dispatch(actions.authCheckState()),
+  }
+}
+
+export default withRouter(connect(null, mapDispatchToProps)(App));
