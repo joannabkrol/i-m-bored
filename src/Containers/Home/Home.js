@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 
+import {connect} from 'react-redux';
+import * as actions from '../../store/actions/index';
+
 import TalkBubble from '../../Components/UI/TalkBubble/TalkBubble';
 import Button from '../../Components/UI/Button/Button';
 //import Spinner from '../../Components/UI/Spinner/Spinner';
@@ -23,6 +26,16 @@ class Home extends Component {
         showFailModal: false,
         randomActivity: { label: '', category: '' },
     }
+    
+    addChallengeHandler = (event) => {
+        event.preventDefault();
+        //here should dispatch method from redux handling sending data to server
+        const challengeData = {
+            userId: this.props.userId,
+            activity: this.state.randomActivity.label,
+        }
+        this.props.onAddChallenge(challengeData, this.props.token);
+    }
       
     goToCatalogHandler = () => {
         this.props.history.push({
@@ -43,6 +56,13 @@ class Home extends Component {
 
 
     render () {
+        let addChallenge = null;
+        if (this.props.isAuthenticated) {
+            addChallenge = <Button size="small" colorType="whitep" clicked={this.addChallengeHandler}>
+            Add to your challenges
+            </Button>
+        }
+
         return (
             <React.Fragment>
                 <img className={classes.GraphicRight} src={leaves} alt="leaves shape" />
@@ -61,6 +81,7 @@ class Home extends Component {
                     Share your challenge at: <br></br>
                     Facebook, Instagram, Twitter or wherever you like</p>
                     <div style={{display: 'flex', justifyContent: 'space-evenly', marginTop: '30px'}}>
+                    {addChallenge}
                     <Button size="small" colorType="whitep" clicked={this.goToCatalogHandler}>Go to Catalog</Button>
                     <Button size="small"  colorType="whitep" clicked={() => window.location.reload(false)}>Try again</Button>
                     </div>
@@ -87,4 +108,19 @@ class Home extends Component {
         )
     }
 }
-export default Home;
+
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.token !== null,
+        token: state.auth.token,
+        userId: state.auth.userId,
+        loading: state.challenge.loading,
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+        onAddChallenge: (challengeData, token) => dispatch(actions.addChallenge(challengeData, token))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
