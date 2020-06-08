@@ -11,6 +11,7 @@ import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
 import authReducer from './store/reducers/auth';
 import challengeReducer from './store/reducers/addChallenge';
 import fetchChallengeReducer from './store/reducers/fetchChallenge';
+import finishedChallengeReducer from './store/reducers/addFinishedChallenge';
 import thunk from 'redux-thunk';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   challenge: challengeReducer,
   fetchChallenge: fetchChallengeReducer,
+  finishedChallenge: finishedChallengeReducer,
 });
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
