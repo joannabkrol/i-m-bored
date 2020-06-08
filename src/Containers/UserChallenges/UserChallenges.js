@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import * as actions from '../../store/actions/index';
 
 import Spinner from '../../Components/UI/Spinner/Spinner';
-import ActivitySquare from '../../Components/UI/ActivitySquare/ActivitySquare';
+import ActivityContainer from '../../Components/UI/ActivityContainer/ActivityContainer';
 
 class UserChallenges extends Component {
     componentDidMount() {
@@ -17,9 +17,9 @@ class UserChallenges extends Component {
         let challenges = <Spinner />;
         if (!this.props.loading) {
             challenges = this.props.challenges.map(challenge => (
-                <ActivitySquare key={challenge.id}>
+                <ActivityContainer key={challenge.id} containerStyle="Activity" colorStyle="White">
                     {challenge.activity}
-                </ActivitySquare>
+                </ActivityContainer>
             ))
         }
 
@@ -27,7 +27,7 @@ class UserChallenges extends Component {
             <div className={classes.UserContainer}>
                 <div className={classes.Challenges}>
                     <p className={classes.Header}>Your challenges</p>
-                    <div style={{display: 'flex', flexDirection: 'row'}}>
+                    <div>
                     {challenges}
                     </div>
                 </div>

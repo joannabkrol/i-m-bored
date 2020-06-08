@@ -7,16 +7,19 @@
 
 .Challenges {
     background-color: #DD355E;
-    color: white;
     border-radius: 15px;
     text-align: center;
     padding: 1.3rem;
     box-sizing: border-box;
 }
+.Challenges div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .Achivments {
     background-color: #0F2546;
-    color: white;
     border-radius: 15px;
     margin-top: 1rem;
     text-align: center;
@@ -24,15 +27,17 @@
     box-sizing: border-box;
 }
 .Header {
-    font-size: 1.2rem;
+    font-size: 2rem;
+    color: white;
 }
 @media (min-width: 600px) {
     .UserContainer {
         width: 70%;
     }
     
-    .Challenges {
-    
+    .Challenges div{
+        flex-direction: row;
+        flex-wrap: wrap;
     }
     
     .Achivments {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ActivitiesLists from '../../Components/ActivitiesLists/ActivitiesLists';
-import CategoryItem from '../../Components/CategoryItem/CategoryItem';
+import ActivityContainer from '../../Components/UI/ActivityContainer/ActivityContainer';
 import classes from './CategoriesLists.module.css';
 import Button from '../../Components/UI/Button/Button';
 
@@ -40,7 +40,7 @@ class CategoriesList extends Component {
                 <p className={classes.Header}>Or borwse by category:</p>
                 <div className={classes.CategoryList}>
                 {categories.map((cat, i) => (
-                    <CategoryItem category={cat} select={this.handleSelect} key={i}/>
+                    <ActivityContainer key={i} containerStyle="Category" colorStyle="Yellow" clicked={() => this.handleSelect(cat)}>{cat}</ActivityContainer>
                 ))}
                 </div>
                 <div style={{ float:"left", clear: "both" }}

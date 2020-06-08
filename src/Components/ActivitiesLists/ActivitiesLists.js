@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ActivityItem from './ActivityItem/ActivityItem';
+import ActivityContainer from '../UI/ActivityContainer/ActivityContainer';
 import classes from './ActivitiesLists.module.css';
 
 import {activities} from '../../data/activitiesList';
@@ -22,21 +22,17 @@ class ActivitiesLists extends Component {
                 {activities.map((activity, i) => {
                     if(Array.isArray(this.props.selectedCategory)) {
                         return (
-                            <ActivityItem 
-                        key={i}
-                        label={activity.label}
-                    />
+                            <ActivityContainer key={i} containerStyle="Activity" colorStyle="Green">{activity.label}</ActivityContainer>
+                       
                         )
                     } 
                     if (activity.category === this.props.selectedCategory)
                     {
                         return (
-                            <ActivityItem 
-                        key={i}
-                        label={activity.label}
-                    />
+                            <ActivityContainer key={i} containerStyle="Activity" colorStyle="Green">{activity.label}</ActivityContainer>
                         )
                     }
+                    return null;
                 })}
                     
                 </div>
