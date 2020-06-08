@@ -18,6 +18,7 @@ class UserChallenges extends Component {
     componentDidMount() {
         this.props.onFetchChallenge(this.props.token, this.props.userId);
         //call to fetch finishedChallenges:
+        this.props.onFetchFinishedChallenge(this.props.token, this.props.userId);
     }
     showModalHandler = (challenge) => {
         this.setState({
@@ -56,6 +57,18 @@ class UserChallenges extends Component {
                 </ActivityContainer>
             ))
         }
+        let finishedChallenges = <Spinner />;
+        if (!this.props.loading) {
+            finishedChallenges = this.props.finishedChallenges.map(challenge => (
+                <ActivityContainer 
+                    key={challenge.id} 
+                    containerStyle="Activity" colorStyle="White"
+                    clicked={() => this.showModalHandler(challenge.activity)}
+                    >
+                    {challenge.activity}
+                </ActivityContainer>
+            ))
+        }
 
         return (
             <React.Fragment>
@@ -78,7 +91,7 @@ class UserChallenges extends Component {
                 <div className={classes.Achivments}>
                     <p className={classes.Header}>Your achivments</p>
                     <div className={classes.ActivitiesContainer}>
-
+                    {finishedChallenges}
                     </div>
                 </div>
             </div>
@@ -92,7 +105,7 @@ const mapStateToProps = state => {
         loading: state.fetchChallenge.loading,
         token: state.auth.token,
         userId: state.auth.userId,
-        finishedChallenges: state.finishedChallenge.finishedChallenges,
+        finishedChallenges: state.fetchFinishedChallenge.finishedChallenges,
     }
 }
 
@@ -100,6 +113,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onFetchChallenge: (token, userId) => dispatch(actions.fetchChallenge(token, userId)),
         onAddFinishedChallenge: (finishedChallengeData, token) => dispatch(actions.addFinishedChallenge(finishedChallengeData, token)),
+        onFetchFinishedChallenge: (token, userId) => dispatch(actions.fetchFinishedChallenge(token, userId)),
     }
 }
 
