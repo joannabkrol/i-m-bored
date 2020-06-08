@@ -83,7 +83,7 @@ class Home extends Component {
                     <i>#imbored #imboredchallenge</i> <br></br><br></br>
                     Share your challenge at: <br></br>
                     Facebook, Instagram, Twitter or wherever you like</p>
-                    <div style={{display: 'flex', justifyContent: 'space-evenly', marginTop: '30px'}}>
+                    <div style={{display: 'flex', flexDirection: "column", marginTop: '30px'}}>
                     {addChallenge}
                     <Button size="small" colorType="whitep" clicked={this.goToCatalogHandler}>Go to Catalog</Button>
                     <Button size="small"  colorType="whitep" clicked={() => window.location.reload(false)}>Try again</Button>
