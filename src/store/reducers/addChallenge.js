@@ -20,7 +20,6 @@ const reducer = (state = initialState, action) => {
             };
         case actionTypes.ADD_CHALLENGE_SUCCESS:
             const newChellange = {
-                //im not sure of this below:
                 ...action.challengeData,
                 id: action.challengeId
             }

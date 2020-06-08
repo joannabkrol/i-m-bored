@@ -25,9 +25,10 @@ export const addChallengeInit = () => {
     }
 }
 export const addChallenge = (challengeData, token) => {
+    const activityId = challengeData.userId + challengeData.activity;
     return dispatch => {
         dispatch(addChallengeStart());
-        axios.post('https://i-m-bored-74278.firebaseio.com/challenges.json?auth=' + token, challengeData)
+        axios.put(`https://i-m-bored-74278.firebaseio.com/challenges/${challengeData.userId}/${activityId}.json?auth=` + token, challengeData)
         .then(response => {
             console.log(response.data);
             dispatch(addChallengeSuccess(response.data.name, challengeData))

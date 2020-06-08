@@ -22,8 +22,8 @@ export const fetchChallengeStart = () => {
 export const fetchChallenge = (token, userId) => {
     return dispatch => {
         dispatch(fetchChallengeStart());
-        const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
-        axios.get('https://i-m-bored-74278.firebaseio.com/challenges.json' + queryParams)
+        const queryParams = '?auth=' + token;
+        axios.get(`https://i-m-bored-74278.firebaseio.com/challenges/${userId}.json` + queryParams)
         .then(response => {
             console.log(response.data);
             const fetchedChallenges = [];
