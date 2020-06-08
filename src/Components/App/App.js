@@ -7,6 +7,7 @@ import PageNotFound from '../../Containers/404 page/404page';
 import Signup from '../../Components/Signup/Signup';
 import AuthLogIn from '../../Containers/AuthLogIn/AuthLogIn';
 import Logout from '../../Containers/AuthLogIn/Logout/Logout';
+import UserChallenges from '../../Containers/UserChallenges/UserChallenges';
 
 import {Switch, Route, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
@@ -21,16 +22,36 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div>
-       <Layout>
-          <Switch>
+      let routes = (
+        <Switch>
             <Route path="/catalog" component={CategoriesLists}/>
             <Route path="/signin" component={AuthLogIn}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/logout" component={Logout}/>
             <Route path="/" exact component={Home}/>
             <Route component={PageNotFound}/>
+          </Switch>
+      )
+      if (this.props.isAuthenticated) {
+        routes = (
+          <Switch>
+            <Route path="/catalog" component={CategoriesLists}/>
+            <Route path="/signin" component={AuthLogIn}/>
+            <Route path="/signup" component={Signup}/>
+            <Route path="/user" component={UserChallenges}/>
+            <Route path="/logout" component={Logout}/>
+            <Route path="/" exact component={Home}/>
+            <Route component={PageNotFound}/>
+          </Switch>
+        )
+      }
+
+
+    return (
+      <div>
+       <Layout>
+          <Switch>
+            {routes}
           </Switch>
        </Layout>
         
@@ -39,6 +60,11 @@ class App extends Component {
   }
   
 }
+const mapStateToProps = state => {
+  return {
+      isAuthenticated: state.auth.token != null
+  }
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -46,4 +72,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

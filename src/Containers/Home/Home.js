@@ -35,6 +35,9 @@ class Home extends Component {
             activity: this.state.randomActivity.label,
         }
         this.props.onAddChallenge(challengeData, this.props.token);
+        this.setState({
+            showSuccessModal: false,
+        })
     }
       
     goToCatalogHandler = () => {
