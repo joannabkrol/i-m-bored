@@ -17,8 +17,6 @@ class UserChallenges extends Component {
     }
     componentDidMount() {
         this.props.onFetchChallenge(this.props.token, this.props.userId);
-        //call to fetch finishedChallenges:
-        this.props.onFetchFinishedChallenge(this.props.token, this.props.userId);
     }
     showModalHandler = (challenge) => {
         this.setState({
@@ -36,39 +34,52 @@ class UserChallenges extends Component {
         const finishedChallengeData = {
             activity: this.state.currentChallenge,
             userId: this.props.userId,
+            finishedChallenge: true,
         };
         //call to post the finished challenge:
         this.props.onAddFinishedChallenge(finishedChallengeData, this.props.token);
-        //call to delete challenge from challenges on server:
-        //set up showModal state to false
+
+        //set up showModal state to false:
         this.setState({showModal: false});
+
+        //reload page:
+        
+        
     }
 
     render() {
         let challenges = <Spinner />;
         if (!this.props.loading) {
-            challenges = this.props.challenges.map(challenge => (
+            challenges = this.props.challenges.map(challenge => {
+                if (!challenge.finishedChallenge) {
+                    return (
                 <ActivityContainer 
                     key={challenge.id} 
                     containerStyle="Activity" colorStyle="White"
                     clicked={() => this.showModalHandler(challenge.activity)}
                     >
                     {challenge.activity}
-                </ActivityContainer>
-            ))
-        }
+                </ActivityContainer>)
+                }
+                return null;
+                })
+        };
         let finishedChallenges = <Spinner />;
         if (!this.props.loading) {
-            finishedChallenges = this.props.finishedChallenges.map(challenge => (
-                <ActivityContainer 
+            finishedChallenges = this.props.challenges.map(challenge => {
+                if (challenge.finishedChallenge) {
+                    return (
+                    <ActivityContainer 
                     key={challenge.id} 
                     containerStyle="Activity" colorStyle="White"
                     clicked={() => this.showModalHandler(challenge.activity)}
                     >
                     {challenge.activity}
-                </ActivityContainer>
-            ))
-        }
+                </ActivityContainer>)
+                }
+                return null;
+            })
+        };
 
         return (
             <React.Fragment>
@@ -105,7 +116,6 @@ const mapStateToProps = state => {
         loading: state.fetchChallenge.loading,
         token: state.auth.token,
         userId: state.auth.userId,
-        finishedChallenges: state.fetchFinishedChallenge.finishedChallenges,
     }
 }
 
@@ -113,7 +123,6 @@ const mapDispatchToProps = dispatch => {
     return {
         onFetchChallenge: (token, userId) => dispatch(actions.fetchChallenge(token, userId)),
         onAddFinishedChallenge: (finishedChallengeData, token) => dispatch(actions.addFinishedChallenge(finishedChallengeData, token)),
-        onFetchFinishedChallenge: (token, userId) => dispatch(actions.fetchFinishedChallenge(token, userId)),
     }
 }
 

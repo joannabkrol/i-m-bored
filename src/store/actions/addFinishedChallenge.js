@@ -6,6 +6,7 @@ export const addFinishedChallengeSuccess = (id, finishedChallengeData) => {
         type: actionTypes.ADD_FINISHED_CHALLENGE_SUCCESS,
         challengeId: id,
         finishedChallengeData: finishedChallengeData,
+        
     }
 }
 export const addFinishedChallengeFail = (error) => {
@@ -28,10 +29,12 @@ export const addFinishedChallenge = (finishedChallengeData, token) => {
     const activityId = finishedChallengeData.userId + finishedChallengeData.activity;
     return dispatch => {
         dispatch(addFinishedChallengeStart());
-        axios.put(`https://i-m-bored-74278.firebaseio.com/finished-challenges/${finishedChallengeData.userId}/${activityId}.json?auth=` + token, finishedChallengeData)
+        axios.put(`https://i-m-bored-74278.firebaseio.com/challenges/${finishedChallengeData.userId}/${activityId}.json?auth=` + token, finishedChallengeData)
+        //axios.put(`https://i-m-bored-74278.firebaseio.com/finished-challenges/${finishedChallengeData.userId}/${activityId}.json?auth=` + token, finishedChallengeData)
         .then(response => {
             console.log(response.data);
-            dispatch(addFinishedChallengeSuccess(response.data.name, finishedChallengeData))
+            dispatch(addFinishedChallengeSuccess(response.data.name, finishedChallengeData));
+            window.location.reload();
         })
         .catch(error => {
             dispatch(addFinishedChallengeFail(error))
