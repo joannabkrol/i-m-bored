@@ -10,6 +10,10 @@ import ActivityContainer from '../../Components/UI/ActivityContainer/ActivityCon
 import Modal from '../../Components/UI/Modal/Modal';
 import Button from '../../Components/UI/Button/Button';
 
+//background elements:
+import LeftTriangle from '../../assets/SVG/Asset 5.svg';
+import RightShape from '../../assets/SVG/Asset 6.svg';
+
 class UserChallenges extends Component {
     state = {
         showModal: false,
@@ -83,6 +87,8 @@ class UserChallenges extends Component {
 
         return (
             <React.Fragment>
+            <img className={classes.GraphicLeft} src={LeftTriangle} alt="green triangle shape" />
+            <img className={classes.GraphicRight} src={RightShape} alt="yellow shape" />
             <Modal 
                 show={this.state.showModal}
                 hideModal={this.hideModalHandler}

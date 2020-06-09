@@ -39,8 +39,18 @@
         flex-direction: row;
         flex-wrap: wrap;
     }
-    
-    .Achivments {
-    
-    }
+}
+.GraphicLeft {
+    left: 0;
+    bottom: 0;
+    z-index: -100;
+    position: fixed;
+    width: 25vh;
+}
+.GraphicRight {
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    z-index: -100;
+    position: fixed;
 }
