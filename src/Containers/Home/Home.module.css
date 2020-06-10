@@ -34,7 +34,7 @@
     margin: 0;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 800px) {
     .Conversation {
         width: 80%;
     }

@@ -1,70 +1,39 @@
 .Auth {
-    width: 90%;
-    margin: 20px auto;
+    width: 300px;
+    margin: 1rem auto;
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    
+    display: fixed;
+    left: 0;
+    right: 0;
 }
 .ErrorMsg {
-    width: 90%;
-    margin: 20px auto;
+    width: 300px;
+    margin: 1rem auto;
     box-sizing: border-box;
     background-color: white;
     border-radius: 10px;
-    padding: 20px;
+    padding: 1rem;
     color: #dd355e;
+    left: 0;
+    right: 0;
+    display: fixed;
 }
 .Form {
     background-color: white;
     border-radius: 10px;
+    padding-bottom: 1.5rem;
 }
 .Form h2 {
     color: #0F2546;
     text-align: center;
     margin: 0;
-    padding: 20px;
+    padding: 1rem;
 }
 .Input {
     display: block;
     margin: auto;
 }
-.SwitchToSignUp {
-    background-color: white;
-    border-radius: 10px;
-    width: 100%;
-    margin-top: 10px;
-    height: 200px;
-}
-.SwitchToSignUp h2 {
-    text-align: center;
-    color: #0F2546;
-}
-.textContainer {
-    padding: 10% 0;
-}
 
 @media (min-width: 600px) {
-    .Auth {
-        width: 70%;
-        flex-direction: row;
-    }
-    .ErrorMsg {
-        width: 70%;
-    }
-    .Form {
-        width: 50%;
-        height: 50vh;
-        margin: 10px;
-    }
-    .SwitchToSignUp {
-        background-color: white;
-        border-radius: 10px;
-        width: 50%;
-        height: 50vh;
-        margin: 10px;
-    }
-    .textContainer {
-        padding: 40% 0;
-    }
+
 }

@@ -114,9 +114,9 @@ class Auth extends Component {
             form = <Spinner/>
         }
         let errorMessage = null;
-        if (this.props.error) {
+        if (this.props.errorSignin) {
             errorMessage = (
-                <div className={classes.ErrorMsg}><p>{this.props.error.message}</p></div>
+                <div className={classes.ErrorMsg}><p>{this.props.errorSignin.message}</p></div>
             )
         }
         let authRedirect = null;
@@ -126,26 +126,26 @@ class Auth extends Component {
 
         return(<React.Fragment>
                 {authRedirect}
-                {errorMessage}
-                <div className={classes.Auth}>
-                        <div className={classes.Form}>
-                            <h2>SIGN IN</h2>
-                            <form>
-                                {form}
-                                <Button 
-                                    colorType="white" size="small" position="center"
-                                    clicked={this.submitSignInHandler}
-                                >SUBMIT</Button>
-                            </form>
+                
+                {this.state.showSignup ? <SignUp/> : (
+                    <React.Fragment>
+                        {errorMessage}
+                        <div className={classes.Auth}>
+                            <div className={classes.Form}>
+                                <h2>SIGN IN</h2>
+                                <form>
+                                    {form}
+                                    <Button 
+                                        colorType="white" size="small" position="center"
+                                        clicked={this.submitSignInHandler}
+                                    >SUBMIT</Button>
+                                </form>
+                                <p onClick={this.showSignupHandler} style={{textAlign: "center", color: "#13DFBA"}}> Click here to Sign up </p>
+                            </div>
                         </div>
-                        <div className={classes.SwitchToSignUp} onClick={this.showSignupHandler}>
-                            {this.state.showSignup ? <SignUp/> 
-                            : <div className={classes.textContainer}><h2>
-                            Click here to sign up
-                            </h2></div>}
-                        </div>
-                    
-                </div>
+                    </React.Fragment>
+                )}
+                
             </React.Fragment>
         );
     }
@@ -153,7 +153,7 @@ class Auth extends Component {
 const mapStateToProps = state => {
     return {
         loading: state.auth.loadingSignin,
-        error: state.auth.error,
+        errorSignin: state.auth.errorSignin,
         isAuth: state.auth.token !== null,
     }
 }

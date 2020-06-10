@@ -4,6 +4,8 @@ import Input from '../../Components/UI/Input/Input';
 import Button from '../../Components/UI/Button/Button';
 import Spinner from '../../Components/UI/Spinner/Spinner';
 
+import Signin from '../../Containers/AuthLogIn/AuthLogIn';
+
 import classes from './Signup.module.css';
 import * as actions from '../../store/actions/index';
 import {connect} from 'react-redux';
@@ -55,13 +57,13 @@ class Auth extends Component {
                 touched: false
             },
         },
+        switchToSignIn: false,
     }
     checkValidity(val, rules) {
         let isValid = true;
         if (!rules) {
             return true;
         }
-
         if (rules.required) {
             isValid = val.trim() !== '' && isValid;
         }
@@ -91,11 +93,15 @@ class Auth extends Component {
         }
         this.setState({controls: updatedControls});
     }
-
     submitSignUpHandler = (event) => {
         event.preventDefault();
         //here will be redux dispatch method
         this.props.onAuthSignUp(this.state.controls.mail.value, this.state.controls.password.value, this.state.isSignup);
+    }
+    onSwitchToSignin = () => {
+        this.setState({
+            switchToSignIn: true,
+        })
     }
 
     render(){
@@ -123,27 +129,31 @@ class Auth extends Component {
         if (this.props.loading) {
             formSignUp = <Spinner/>
         }
-        /*
         let errorMessage = null;
         if (this.props.error) {
             errorMessage = (
-                <p>{this.props.error.message}</p>
+                <div className={classes.ErrorMsg}><p>{this.props.error.message}</p></div>
             )
         }
-        */
-        return(
-                    <div className={classes.Form}>
-                        <h2>SIGN UP</h2>
-                        <form>
-                            {formSignUp}
-                            <Button 
-                                colorType="white" size="small" position="center"
-                                clicked={this.submitSignUpHandler}
-                            >SUBMIT</Button>
-                        </form>
-                    </div>
-                
-        );
+ 
+        return (<React.Fragment>
+            {this.state.switchToSignIn ? <Signin/> : 
+            <React.Fragment>
+            {errorMessage}
+            <div className={classes.Form}>
+                <h2>SIGN UP</h2>
+                <form>
+                    {formSignUp}
+                    <Button 
+                        colorType="white" size="small" position="center"
+                        clicked={this.submitSignUpHandler}
+                    >SUBMIT</Button>
+                </form>
+                <p onClick={this.onSwitchToSignin} style={{textAlign: "center", color: "#13DFBA"}}>Click here to Sign in</p>
+            </div>
+            </React.Fragment>
+        }
+        </React.Fragment>);
     }
 }
 const mapStateToProps = state => {

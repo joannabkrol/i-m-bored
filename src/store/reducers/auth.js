@@ -5,24 +5,25 @@ const initialState = {
     token: null,
     userId: null,
     error: null,
+    errorSignin: null,
     loadingSignin: false,
     loadingSignup: false
 };
 //SignIn:
 const authStartSignIn = (state, action) => {
-    return updatedObject(state, {error: null, loadingSignin: true} );
+    return updatedObject(state, {errorSignin: null, loadingSignin: true} );
 }
 const authSuccessSignIn = (state, action) => {
     return updatedObject(state, {
         loadingSignin: false, 
         userId: action.userId, 
         token: action.idToken, 
-        error: null
+        errorSignin: null
     } );
 }
 const authFailSignIn = (state, action) => {
     return updatedObject(state, {
-        error: action.error,
+        errorSignin: action.error,
         loadingSignin: false
     } 
     );
