@@ -80,7 +80,7 @@ export const authSignUp = (email, password, isSignup) => {
             localStorage.setItem('token', response.data.idToken);
             localStorage.setItem('userId', response.data.localId);
             localStorage.setItem('expirationDate', expirationDate);
-
+            sendVerificationEmail(response.data.idToken)
             dispatch(authSuccess(response.data.idToken, response.data.localId));
             dispatch(checkAuthTimeout(response.data.expiresIn));
         })
@@ -89,6 +89,21 @@ export const authSignUp = (email, password, isSignup) => {
             dispatch(authFail(err.response.data.error));
         })
     }
+}
+
+const sendVerificationEmail = (idToken) => {
+    const body = {
+        requestType: 'VERIFY_EMAIL',
+        idToken
+    }
+    let url = 'https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyDAIWd8gJ_GjMAJRF20teOHixvu9HHy6p4';
+    axios.post(url, body)
+    .then(response => {
+        console.log('Sent verification email', response);
+    })
+    .catch(err => {
+        console.log(err);
+    })
 }
 
 export const authSignIn = (email, password) => {

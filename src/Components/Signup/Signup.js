@@ -39,6 +39,21 @@ class Auth extends Component {
                 valid: false,
                 touched: false
             },
+            passwordConfirm: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'password',
+                    placeholder: 'Confirm Password'
+                },
+                value: '',
+                validation: {
+                    required: true,
+                    minLength: 6,
+                    isEqualPassword: true,
+                },
+                valid: false,
+                touched: false
+            },
         },
     }
     checkValidity(val, rules) {
@@ -57,6 +72,9 @@ class Auth extends Component {
         if (rules.isEmail) {
             const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
             isValid = pattern.test(val) && isValid;
+        }
+        if (rules.isEqualPassword) {
+            isValid = val === this.state.controls.password.value && isValid;
         }
         return isValid;
     }
