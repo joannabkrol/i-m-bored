@@ -8,36 +8,39 @@
     background-color: #0F2546;
 }
 
+
+.introductionContainer {
+    display: flex;
+    flex-direction: column;
+}
+.title {
+    font-family: 'Lato', sans-serif;
+    font-size: 4rem;
+    -webkit-text-stroke: 2px white;
+    color: #0F2546;
+    letter-spacing: 10px;
+    padding: 4rem;
+    margin: 0;
+}
+.description {
+    color: #13DFBA;
+    size: 1.2rem;
+    text-align: right;
+}
+.illustration {
+    font-size: 4rem;
+    color: #13DFBA;
+    padding: 4rem;
+    margin: 0;
+}
+
 @media (min-width: 500px) {
     .Conversation {
         width: 80%;
     }
-}
-.GraphicRight {
-    position: fixed;
-    z-index: -1;
-    width: 15%;
-    right: 0;
-    bottom: 50%;
-}
-.GraphicLeft {
-    position: fixed;
-    z-index: -1;
-    left: 0;
-    bottom: 0;
-    width: 40%;
-}
-.GraphicRightBottom {
-    position: fixed;
-    z-index: -1;
-    right: 0;
-    bottom: 0;
-    width: 30%;
-}
-.GraphicCentreBottom {
-    position: fixed;
-    z-index: -1;
-    right: 35%;
-    bottom: 0;
-    width: 30%;
+    .introductionContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
 }

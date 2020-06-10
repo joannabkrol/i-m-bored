@@ -1,40 +1,29 @@
-.Activity {
+
+.Container {
     width:  160px;
-    height: 160px;
-    box-shadow: 1px 2px 2px 1px black;
     border-radius: 10px;
     text-align: center;
     box-sizing: border-box;
     padding: 18% 2% 10% 2%;
     margin: 2% 2% 4% 2%;
     cursor: pointer;
+}
+.Container.Activity {
+    height: 160px;
     font-size: 1.3rem;
 }
-
+.Container.Category {
+    height: auto;
+    font-size: 1.5rem;
+}
 @media (min-width: 500px) {
-    .Activity {
+    .Container.Activity {
         width:  200px;
         height: 200px;
         margin: 10px;
         padding: 10% 2% 10% 2%;
     }
-}
-
-.Category {
-    width:  160px;
-    height: auto;
-    box-shadow: 1px 2px 2px 1px black;
-    border-radius: 10px;
-    text-align: center;
-    box-sizing: border-box;
-    padding: 18% 2% 10% 2%;
-    margin: 2% 2% 4% 2%;
-    cursor: pointer;
-    font-size: 1.5rem;
-}
-
-@media (min-width: 500px) {
-    .Category {
+    .Container.Category {
         width:  200px;
         height: auto;
         margin: 10px;
@@ -43,25 +32,35 @@
 }
 
 /*colorStyle*/
-.Green {
+.greenOnGreen {
+    background-color: #0F2546;
+    border: 1px solid #13DFBA;
+    color: #13DFBA;
+}
+.greenOnGreen:hover {
     background-color: #13DFBA;
+    color: #0F2546;
 }
-.Green:hover {
-    background-color: #DD355E;
+.whiteOnWhite {
+    background-color: #0F2546;
+    border: 1px solid white;
     color: white;
 }
-.Yellow {
-    background-color: #EED23C;
-}
-.Yellow:hover {
-    background-color: #DD355E;
-    color: white;
-}
+
 .White {
     background-color: white;
     color: #0F2546;
 }
 .White:hover {
-    background-color: #EED23C;
+    background-color: #13DFBA;
     color: #0F2546;
+}
+.Navy {
+    border: 1px solid #0F2546;
+    color: #0F2546;
+}
+.Navy:hover {
+    border: 1px solid #13DFBA;
+    color: #0F2546;
+    background-color: #13DFBA;
 }

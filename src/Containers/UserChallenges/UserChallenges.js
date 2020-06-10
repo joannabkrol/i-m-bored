@@ -10,10 +10,6 @@ import ActivityContainer from '../../Components/UI/ActivityContainer/ActivityCon
 import Modal from '../../Components/UI/Modal/Modal';
 import Button from '../../Components/UI/Button/Button';
 
-//background elements:
-import LeftTriangle from '../../assets/SVG/Asset 5.svg';
-import RightShape from '../../assets/SVG/Asset 6.svg';
-
 class UserChallenges extends Component {
     state = {
         showModal: false,
@@ -59,7 +55,7 @@ class UserChallenges extends Component {
                     return (
                 <ActivityContainer 
                     key={challenge.id} 
-                    containerStyle="Activity" colorStyle="White"
+                    containerStyle="Activity" colorStyle="Navy"
                     clicked={() => this.showModalHandler(challenge.activity)}
                     >
                     {challenge.activity}
@@ -75,7 +71,7 @@ class UserChallenges extends Component {
                     return (
                     <ActivityContainer 
                     key={challenge.id} 
-                    containerStyle="Activity" colorStyle="White"
+                    containerStyle="Activity" colorStyle="Navy"
                     clicked={() => this.showModalHandler(challenge.activity)}
                     >
                     {challenge.activity}
@@ -87,26 +83,24 @@ class UserChallenges extends Component {
 
         return (
             <React.Fragment>
-            <img className={classes.GraphicLeft} src={LeftTriangle} alt="green triangle shape" />
-            <img className={classes.GraphicRight} src={RightShape} alt="yellow shape" />
             <Modal 
                 show={this.state.showModal}
                 hideModal={this.hideModalHandler}
                 modalType="white">
                 <p>Have you finished this challenge?</p>
-                <Button size="small" colorType="whitep" clicked={this.addFinishedChallenge}>Yes</Button>
-                <Button size="small"  colorType="whitep" clicked={this.hideModalHandler}>No</Button>
+                <Button size="small" colorType="white" clicked={this.addFinishedChallenge}>Yes</Button>
+                <Button size="small"  colorType="white" clicked={this.hideModalHandler}>No</Button>
                     
             </Modal>
             <div className={classes.UserContainer}>
-                <div className={classes.Challenges}>
+                <div className={classes.ChallengesContainer}>
                     <p className={classes.Header}>Your challenges</p>
                     <div className={classes.ActivitiesContainer}>
                     {challenges}
                     </div>
                 </div>
-                <div className={classes.Achivments}>
-                    <p className={classes.Header}>Your achivments</p>
+                <div className={classes.ChallengesContainer}>
+                    <p className={classes.Header}>Your achievements</p>
                     <div className={classes.ActivitiesContainer}>
                     {finishedChallenges}
                     </div>

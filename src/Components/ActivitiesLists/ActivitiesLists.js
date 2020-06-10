@@ -22,14 +22,14 @@ class ActivitiesLists extends Component {
                 {activities.map((activity, i) => {
                     if(Array.isArray(this.props.selectedCategory)) {
                         return (
-                            <ActivityContainer key={i} containerStyle="Activity" colorStyle="Green">{activity.label}</ActivityContainer>
+                            <ActivityContainer key={i} containerStyle="Activity" colorStyle="whiteOnWhite">{activity.label}</ActivityContainer>
                        
                         )
                     } 
                     if (activity.category === this.props.selectedCategory)
                     {
                         return (
-                            <ActivityContainer key={i} containerStyle="Activity" colorStyle="Green">{activity.label}</ActivityContainer>
+                            <ActivityContainer key={i} containerStyle="Activity" colorStyle="whiteOnWhite">{activity.label}</ActivityContainer>
                         )
                     }
                     return null;

@@ -4,7 +4,7 @@ import './ActivityContainer.css';
 const activitySquare = (props) => {
 
     return (
-    <div className={`${props.containerStyle} ${props.colorStyle}`} onClick={props.clicked}>
+    <div className={`${props.containerStyle} ${props.colorStyle} Container`} onClick={props.clicked}>
     {props.children}
     </div>)
 }

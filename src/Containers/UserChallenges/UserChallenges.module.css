@@ -5,12 +5,13 @@
     margin: auto;
 }
 
-.Challenges {
-    background-color: #DD355E;
+.ChallengesContainer {
+    background-color: white;
     border-radius: 15px;
     text-align: center;
     padding: 1.3rem;
     box-sizing: border-box;
+    margin-top: 3rem;
 }
 .ActivitiesContainer {
     display: flex;
@@ -18,17 +19,9 @@
     align-items: center;
 }
 
-.Achivments {
-    background-color: #0F2546;
-    border-radius: 15px;
-    margin-top: 1rem;
-    text-align: center;
-    padding: 1.3rem;
-    box-sizing: border-box;
-}
 .Header {
     font-size: 2rem;
-    color: white;
+    color: #0F2546;
 }
 @media (min-width: 600px) {
     .UserContainer {
@@ -39,18 +32,4 @@
         flex-direction: row;
         flex-wrap: wrap;
     }
-}
-.GraphicLeft {
-    left: 0;
-    bottom: 0;
-    z-index: -100;
-    position: fixed;
-    width: 25vh;
-}
-.GraphicRight {
-    right: 0;
-    bottom: 0;
-    height: 100vh;
-    z-index: -100;
-    position: fixed;
 }
