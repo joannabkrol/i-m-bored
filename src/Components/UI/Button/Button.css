@@ -45,6 +45,7 @@
 .Button.smallLong {
     width: 50%;
     height: 80px;
+    padding: 1rem 0.5rem;
 }
 .Button.primary {
     padding: 10% 2% 10% 2%;

@@ -9,6 +9,7 @@ import Modal from '../../Components/UI/Modal/Modal';
 import classes from './Home.module.css';
 
 import {activities} from '../../data/activitiesList';
+import image from '../../assets/1x/boredwomen.png';
 
 const random = Math.floor(Math.random() * Math.floor(activities.length));
 
@@ -85,20 +86,32 @@ class Home extends Component {
                         <div>
                             <p className={classes.title}>I'M SO<br></br>BORED!</p>
                             <p className={classes.description}>Then do something! Here you will find many ideas for activities, hobby and new things to try. <br></br>Take a challenge. <br></br>Join today!</p>
+                            <div className={classes.DesktopButtonsContainer}>
+                                <Button 
+                                size="small"
+                                colorType="green"
+                                clicked={this.showSuccessModalHandler}
+                                >Challenge for you</Button>
+                                <Button
+                                size="small"
+                                colorType="green"
+                                clicked={this.goToCatalogHandler}
+                                >Catalog of challenges</Button>
+                            </div>
                         </div>
-                        <div><p className={classes.illustration}>Place for illustration</p></div>
+                        <div style={{minWidth: "350px" }}><img src={image} width="90%" alt="Bored women looking at the phone"/></div>
                     </div>
-                    <div style={{display: 'flex', justifyContent: 'space-evenly', marginTop: '20px'}}>
+                    <div className={classes.MobileButtonsContainer}>
                         <Button 
-                            size="primary"
+                            size="smallLong"
                             colorType="green"
                             clicked={this.showSuccessModalHandler}
-                            >Click here to see a challenge for you</Button>
+                            >Challenge for you</Button>
                         <Button
-                            size="primary"
+                            size="smallLong"
                             colorType="green"
                             clicked={this.goToCatalogHandler}
-                        >Click here to see the catalog of challenges</Button>
+                        >Catalog of challenges</Button>
                     </div> 
                  </div>
             </React.Fragment>
