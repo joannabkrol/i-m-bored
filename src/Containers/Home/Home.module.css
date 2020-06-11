@@ -6,6 +6,7 @@
     max-width: 1000px;
     width: 95%;
     background-color: #0F2546;
+    height: 100%;
 }
 
 
@@ -39,6 +40,7 @@
 @media (min-width: 800px) {
     .Conversation {
         width: 80%;
+        height: 80vh;
     }
     .introductionContainer {
         display: flex;

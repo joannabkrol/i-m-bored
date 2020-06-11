@@ -136,7 +136,8 @@ class Auth extends Component {
             )
         }
  
-        return (<React.Fragment>
+        return (
+        <div style={{height: "80vh"}}>
             {this.state.switchToSignIn ? <Signin/> : 
             <React.Fragment>
             {errorMessage}
@@ -153,7 +154,8 @@ class Auth extends Component {
             </div>
             </React.Fragment>
         }
-        </React.Fragment>);
+        </div>
+        );
     }
 }
 const mapStateToProps = state => {
