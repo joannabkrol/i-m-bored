@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Toolbar from '../Navigation/Toolbar';
 import classes from './Layout.module.css';
 import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
+import Footer from '../Navigation/Footer/Footer';
 
 import {connect} from 'react-redux';
 
@@ -35,6 +36,7 @@ class Layout extends Component {
                 <main className={classes.Content}>
                 {this.props.children}
                 </main>
+                <Footer/>
             </React.Fragment>
         )
     }

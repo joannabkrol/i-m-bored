@@ -1,0 +1,18 @@
+.Footer {
+    margin: 0;
+    padding: 1rem;
+    width: 100%;
+    height: 4rem;
+    bottom: 0;
+    box-sizing: border-box;
+    border-top: 1px solid white;
+    /*box-shadow: 0px -5px 10px #13DFBA;*/
+    display: flex;
+    justify-content: space-between;
+}
+.Footer p, ul {
+    color: white;
+}
+.Footer ul li {
+    list-style: none;
+}
