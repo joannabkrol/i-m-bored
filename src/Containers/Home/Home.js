@@ -85,7 +85,7 @@ class Home extends Component {
                     <div className={classes.introductionContainer}>
                         <div>
                             <p className={classes.title}>I'M SO<br></br>BORED!</p>
-                            <p className={classes.description}>Then do something! Here you will find many ideas for activities, hobby and new things to try. <br></br>Take a challenge. <br></br>Join today!</p>
+                            <p className={classes.description}>Then do something! Here you will find many challenges that may inspire you to start a new hobby or activity. <br></br>Take a challenge. <br></br>Join today!</p>
                             <div className={classes.DesktopButtonsContainer}>
                                 <Button 
                                 size="small"
