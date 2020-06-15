@@ -9,7 +9,7 @@ import Spinner from '../../Components/UI/Spinner/Spinner';
 import ActivityContainer from '../../Components/UI/ActivityContainer/ActivityContainer';
 import Modal from '../../Components/UI/Modal/Modal';
 import Button from '../../Components/UI/Button/Button';
-import RandomActivityModal from '../../Components/RandomActivity/RandomActivity';
+import RandomActivityModal from '../../Components/RandomActivityModal/RandomActivityModal';
 
 class UserChallenges extends Component {
     state = {
@@ -112,7 +112,7 @@ class UserChallenges extends Component {
                     {challenges}
                     <ActivityContainer 
                         containerStyle="Activity" 
-                        colorStyle="Navy"
+                        colorStyle="greenOnGreen"
                         clicked={this.showRandomChallengeModalHandler}>
                         Add new challenge
                     </ActivityContainer>

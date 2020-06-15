@@ -121,7 +121,7 @@ class Auth extends Component {
         }
         let authRedirect = null;
         if (this.props.isAuth) {
-            authRedirect = <Redirect to="/" />
+            authRedirect = <Redirect to="/user" />
         }
 
         return(<React.Fragment>

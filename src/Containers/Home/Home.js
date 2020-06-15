@@ -9,7 +9,7 @@ import classes from './Home.module.css';
 
 import image from '../../assets/1x/boredwomen.png';
 
-import RandomActivity from '../../Components/RandomActivity/RandomActivity';
+import RandomActivityModal from '../../Components/RandomActivityModal/RandomActivityModal';
 
 
 class Home extends Component {
@@ -33,7 +33,7 @@ class Home extends Component {
     render () {
         return (
             <React.Fragment>
-                <RandomActivity show={this.state.showSuccessModal}
+                <RandomActivityModal show={this.state.showSuccessModal}
                     hideModal={this.hideSuccessModalHandler}
                     randomActivity={this.props.randomChallenge}
                     />

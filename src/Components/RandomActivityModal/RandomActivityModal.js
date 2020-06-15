@@ -17,7 +17,13 @@ class RandomActivity extends Component {
             userId: this.props.userId,
             activity: this.props.randomActivity.label,
         }
-        this.props.onAddChallenge(challengeData, this.props.token);
+        if (this.props.isAuthenticated) {
+            this.props.onAddChallenge(challengeData, this.props.token);
+        } else {
+            this.props.onSetAuthRedirectPath('/user');
+            window.location.href = '/signin';
+        }
+        
     }
     reloadPage = () => {
         window.location.reload();
@@ -28,14 +34,9 @@ class RandomActivity extends Component {
     }
 
     render() {
-        let addChallenge = <Button size="small" colorType="white"> {/*clicked={}*/}
-        Sign in to add the challenge
+        let addChallenge = <Button size="small" colorType="white" clicked={this.addChallengeHandler}>
+        {this.props.isAuthenticated ? "Add to your challenges" : "Sign in to add the challenge"}
         </Button>;
-        if (this.props.isAuthenticated) {
-            addChallenge = <Button size="small" colorType="white" clicked={this.addChallengeHandler}>
-            Add to your challenges
-            </Button>
-        };
         
         return (
                 <Modal
@@ -71,7 +72,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        onAddChallenge: (challengeData, token) => dispatch(actions.addChallenge(challengeData, token))
+        onAddChallenge: (challengeData, token) => dispatch(actions.addChallenge(challengeData, token)),
+        onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(RandomActivity);
