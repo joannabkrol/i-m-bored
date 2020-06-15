@@ -26,8 +26,7 @@ class UserChallenges extends Component {
             currentChallenge: challenge,
         })
     }
-    showRandomChallengeModalHandler = () => {
-        
+    showRandomChallengeModalHandler = () => {  
         this.setState({
             showRandomChallengeModal: true,
         });
@@ -52,13 +51,8 @@ class UserChallenges extends Component {
         };
         //call to post the finished challenge:
         this.props.onAddFinishedChallenge(finishedChallengeData, this.props.token);
-
         //set up showModal state to false:
-        this.setState({showModal: false});
-
-        //reload page:
-        
-        
+        this.setState({showModal: false});  
     }
 
     render() {

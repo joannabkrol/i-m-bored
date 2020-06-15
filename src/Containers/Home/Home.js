@@ -5,47 +5,23 @@ import * as actions from '../../store/actions/index';
 
 import Button from '../../Components/UI/Button/Button';
 //import Spinner from '../../Components/UI/Spinner/Spinner';
-import Modal from '../../Components/UI/Modal/Modal';
 import classes from './Home.module.css';
 
-import {activities} from '../../data/activitiesList';
 import image from '../../assets/1x/boredwomen.png';
 
 import RandomActivity from '../../Components/RandomActivity/RandomActivity';
 
-const random = Math.floor(Math.random() * Math.floor(activities.length));
 
 class Home extends Component {
     state = {
-        //showActivity: false,
         showSuccessModal: false,
-        showFailModal: false,
-        randomActivity: { label: '', category: '' },
     }
     
-    addChallengeHandler = (event) => {
-        event.preventDefault();
-        //here should dispatch method from redux handling sending data to server
-        const challengeData = {
-            userId: this.props.userId,
-            activity: this.state.randomActivity.label,
-        }
-        this.props.onAddChallenge(challengeData, this.props.token);
-        this.setState({
-            showSuccessModal: false,
-        })
-    }
-      
-    goToCatalogHandler = () => {
-        this.props.history.push({
-            pathname: '/catalog',
-        })
-    }
     showSuccessModalHandler = () => {
         this.setState({
             showSuccessModal: true,
-            randomActivity: activities[random]
         })
+        this.props.onGenerateRandomChallenge();
     }
     hideSuccessModalHandler = () => {
         this.setState({
@@ -55,41 +31,12 @@ class Home extends Component {
 
 
     render () {
-        
-        let addChallenge = null;
-        if (this.props.isAuthenticated) {
-            addChallenge = <Button size="small" colorType="white" clicked={this.addChallengeHandler}>
-            Add to your challenges
-            </Button>
-        }
-
         return (
             <React.Fragment>
-                <Modal
-                    show={this.state.showSuccessModal}
+                <RandomActivity show={this.state.showSuccessModal}
                     hideModal={this.hideSuccessModalHandler}
-                    modalType="white"
-                    >
-                    Your challenge is: <br></br><br></br>
-                    <p><strong>{this.state.randomActivity.label}</strong></p><br></br>
-                    <p style={{fontSize: '1rem'}}>Tag us on social media:<br></br>
-                    <i>#imbored #imboredchallenge</i> <br></br><br></br>
-                    Share your challenge at: <br></br>
-                    Facebook, Instagram, Twitter or wherever you like</p>
-                    <div style={{display: 'flex', flexDirection: "column", marginTop: '30px'}}>
-                    {addChallenge}
-                    <Button size="small" colorType="white" clicked={this.goToCatalogHandler}>Go to Catalog</Button>
-                    <Button size="small"  colorType="white" clicked={() => window.location.reload(false)}>Try again</Button>
-                    </div>
-
-                </Modal>
-                
-
-                {/*<RandomActivity show={this.state.showSuccessModal}
-                    hideModal={this.hideSuccessModalHandler}
-                    
+                    randomActivity={this.props.randomChallenge}
                     />
-*/}
                 <div className={classes.Conversation}>
                     <div className={classes.introductionContainer}>
                         <div>
@@ -134,11 +81,13 @@ const mapStateToProps = state => {
         token: state.auth.token,
         userId: state.auth.userId,
         loading: state.challenge.loading,
+        randomChallenge: state.randomChallenge.randomChallenge,
     }
 }
 const mapDispatchToProps = dispatch => {
     return {
-        onAddChallenge: (challengeData, token) => dispatch(actions.addChallenge(challengeData, token))
+        onAddChallenge: (challengeData, token) => dispatch(actions.addChallenge(challengeData, token)),
+        onGenerateRandomChallenge: () => dispatch(actions.generateRandomChallenge())
     }
 }
 
