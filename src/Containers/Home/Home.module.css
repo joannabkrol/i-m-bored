@@ -60,3 +60,7 @@
         flex-direction: column;
     }
 }
+.Image {
+    min-width: 350px;
+    max-width: 700px;
+}

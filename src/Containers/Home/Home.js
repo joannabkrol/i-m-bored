@@ -28,7 +28,9 @@ class Home extends Component {
             showSuccessModal: false
         })
     }
-
+    goToCatalogHandler = () => {
+        this.props.history.push("/catalog");
+    }
 
     render () {
         return (
@@ -55,7 +57,7 @@ class Home extends Component {
                                 >Catalog of challenges</Button>
                             </div>
                         </div>
-                        <div style={{minWidth: "350px" }}><img src={image} width="90%" alt="Bored women looking at the phone"/></div>
+                        <div className={classes.Image}><img src={image} width="90%" alt="Bored women looking at the phone"/></div>
                     </div>
                     <div className={classes.MobileButtonsContainer}>
                         <Button 

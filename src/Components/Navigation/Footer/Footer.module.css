@@ -8,11 +8,8 @@
     border-top: 1px solid white;
     /*box-shadow: 0px -5px 10px #13DFBA;*/
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
-.Footer p, ul {
+.Footer p {
     color: white;
-}
-.Footer ul li {
-    list-style: none;
 }
