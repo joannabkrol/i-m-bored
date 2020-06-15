@@ -12,6 +12,8 @@ import authReducer from './store/reducers/auth';
 import challengeReducer from './store/reducers/addChallenge';
 import fetchChallengeReducer from './store/reducers/fetchChallenge';
 import finishedChallengeReducer from './store/reducers/addFinishedChallenge';
+import randomChallenge from './store/reducers/generateRandomChallenge';
+
 import thunk from 'redux-thunk';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -21,6 +23,7 @@ const rootReducer = combineReducers({
   challenge: challengeReducer,
   fetchChallenge: fetchChallengeReducer,
   finishedChallenge: finishedChallengeReducer,
+  randomChallenge: randomChallenge,
 });
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));

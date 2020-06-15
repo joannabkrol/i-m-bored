@@ -11,6 +11,8 @@ import classes from './Home.module.css';
 import {activities} from '../../data/activitiesList';
 import image from '../../assets/1x/boredwomen.png';
 
+import RandomActivity from '../../Components/RandomActivity/RandomActivity';
+
 const random = Math.floor(Math.random() * Math.floor(activities.length));
 
 class Home extends Component {
@@ -53,6 +55,7 @@ class Home extends Component {
 
 
     render () {
+        
         let addChallenge = null;
         if (this.props.isAuthenticated) {
             addChallenge = <Button size="small" colorType="white" clicked={this.addChallengeHandler}>
@@ -81,6 +84,12 @@ class Home extends Component {
 
                 </Modal>
                 
+
+                {/*<RandomActivity show={this.state.showSuccessModal}
+                    hideModal={this.hideSuccessModalHandler}
+                    
+                    />
+*/}
                 <div className={classes.Conversation}>
                     <div className={classes.introductionContainer}>
                         <div>

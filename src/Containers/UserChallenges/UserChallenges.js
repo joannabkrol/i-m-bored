@@ -9,11 +9,13 @@ import Spinner from '../../Components/UI/Spinner/Spinner';
 import ActivityContainer from '../../Components/UI/ActivityContainer/ActivityContainer';
 import Modal from '../../Components/UI/Modal/Modal';
 import Button from '../../Components/UI/Button/Button';
+import RandomActivityModal from '../../Components/RandomActivity/RandomActivity';
 
 class UserChallenges extends Component {
     state = {
         showModal: false,
         currentChallenge: null,
+        showRandomChallengeModal: false,
     }
     componentDidMount() {
         this.props.onFetchChallenge(this.props.token, this.props.userId);
@@ -23,6 +25,18 @@ class UserChallenges extends Component {
             showModal: true,
             currentChallenge: challenge,
         })
+    }
+    showRandomChallengeModalHandler = () => {
+        
+        this.setState({
+            showRandomChallengeModal: true,
+        });
+        this.props.onGenerateRandomChallenge();
+    }
+    hideRandomChallengeModalHandler = () => {
+        this.setState({
+            showRandomChallengeModal: false,
+        });
     }
     hideModalHandler = () => {
         this.setState({
@@ -92,11 +106,22 @@ class UserChallenges extends Component {
                 <Button size="small"  colorType="white" clicked={this.hideModalHandler}>No</Button>
                     
             </Modal>
+            <RandomActivityModal 
+                show={this.state.showRandomChallengeModal} 
+                hideModal={this.hideRandomChallengeModalHandler}
+                randomActivity={this.props.randomChallenge}
+                />
             <div className={classes.UserContainer}>
                 <div className={classes.ChallengesContainer}>
                     <p className={classes.Header}>Your challenges</p>
                     <div className={classes.ActivitiesContainer}>
                     {challenges}
+                    <ActivityContainer 
+                        containerStyle="Activity" 
+                        colorStyle="Navy"
+                        clicked={this.showRandomChallengeModalHandler}>
+                        Add new challenge
+                    </ActivityContainer>
                     </div>
                 </div>
                 <div className={classes.ChallengesContainer}>
@@ -116,6 +141,7 @@ const mapStateToProps = state => {
         loading: state.fetchChallenge.loading,
         token: state.auth.token,
         userId: state.auth.userId,
+        randomChallenge: state.randomChallenge.randomChallenge,
     }
 }
 
@@ -123,6 +149,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onFetchChallenge: (token, userId) => dispatch(actions.fetchChallenge(token, userId)),
         onAddFinishedChallenge: (finishedChallengeData, token) => dispatch(actions.addFinishedChallenge(finishedChallengeData, token)),
+        onGenerateRandomChallenge: () => dispatch(actions.generateRandomChallenge())
     }
 }
 

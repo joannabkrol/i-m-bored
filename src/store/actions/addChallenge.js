@@ -32,6 +32,7 @@ export const addChallenge = (challengeData, token) => {
         .then(response => {
             console.log(response.data);
             dispatch(addChallengeSuccess(response.data.name, challengeData))
+            window.location.reload();
         })
         .catch(error => {
             dispatch(addChallengeFail(error))

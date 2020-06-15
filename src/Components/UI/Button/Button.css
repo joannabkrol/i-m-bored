@@ -12,7 +12,7 @@
 
 .Button:hover, .Button.green:hover, .Button.white:hover, .Button.greenOnGreen:hover {
     background-color: #13DFBA;
-    border: 2px solid #13DFBA;
+    border: 1px solid #13DFBA;
     color: #0F2546;
 }
 
