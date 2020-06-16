@@ -80,7 +80,7 @@ class UserChallenges extends Component {
                     <ActivityContainer 
                     key={challenge.id} 
                     containerStyle="Activity" colorStyle="Navy"
-                    clicked={() => this.showModalHandler(challenge.activity)}
+                    
                     >
                     {challenge.activity}
                 </ActivityContainer>)
