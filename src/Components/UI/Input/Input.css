@@ -1,14 +1,14 @@
-.Input {
+.Form-ContainerInput {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
 }
-.Label {
+.Form-Label {
     font-weight: bold;
     display: block;
     margin-bottom: 8px;
 }
-.InputElement {
+.Form-Input{
     outline: none;
     border: 1px solid gray;
     background-color: white;
@@ -19,15 +19,15 @@
     box-sizing: border-box;
     border-radius: 10px;
 }
-.InputElement.focus {
+.Form-Input.focus {
     outline: none;
     background-color: grey;
 }
-.Invalid {
+.Form-Input_invalid {
     border: 1px solid red;
     background-color: lightcoral;
 }
-.ValidationError {
+.Form-Input_validationError {
     color: red;
     margin: 5px 0;
 }

@@ -1,4 +1,4 @@
-.Conversation {
+.Container {
     margin: 50px auto;
     display: flex;
     flex-flow: column;
@@ -10,11 +10,11 @@
 }
 
 
-.introductionContainer {
+.Container-Introduction {
     display: flex;
     flex-direction: column;
 }
-.title {
+.Container-Title {
     font-family: 'Lato', sans-serif;
     font-size: 4rem;
     -webkit-text-stroke: 2px white;
@@ -23,44 +23,44 @@
     padding: 4rem;
     margin: 0 0 0 0;
 }
-.description {
+.Container-Description {
     color: #13DFBA;
     size: 1.2rem;
     text-align: right;
 }
-.MobileButtonsContainer {
+.Container-Btn_mobile {
     display: flex;
     justify-content: space-evenly;
     margin-top: 20px;
 }
-.DesktopButtonsContainer {
+.Container-Btn_desktop {
     display: none;
 }
 
 @media (min-width: 800px) {
-    .Conversation {
+    .Container {
         width: 80%;
         height: 80vh;
     }
-    .introductionContainer {
+    .Container-Introduction {
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
     }
-    .MobileButtonsContainer {
+    .Container-Btn_mobile {
         display: none;
     }
-    .DesktopButtonsContainer {
+    .Container-Btn_desktop {
         display: flex;
     }
 }
 @media (min-width: 1150px) {
-    .DesktopButtonsContainer {
+    .Container-Btn_desktop {
         display: flex;
         flex-direction: column;
     }
 }
-.Image {
+.Container-Image {
     min-width: 350px;
     max-width: 700px;
 }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import classes from './UserChallenges.module.css';
+import './UserChallenges.css';
 
 import {connect} from 'react-redux';
 
@@ -63,7 +63,7 @@ class UserChallenges extends Component {
                     return (
                 <ActivityContainer 
                     key={challenge.id} 
-                    containerStyle="Activity" colorStyle="Navy"
+                    containerStyle="ActivityContainer-Activity" colorStyle="Navy"
                     clicked={() => this.showModalHandler(challenge.activity)}
                     >
                     {challenge.activity}
@@ -79,7 +79,7 @@ class UserChallenges extends Component {
                     return (
                     <ActivityContainer 
                     key={challenge.id} 
-                    containerStyle="Activity" colorStyle="Navy"
+                    containerStyle="ActivityContainer-Activity" colorStyle="Navy"
                     
                     >
                     {challenge.activity}
@@ -94,10 +94,10 @@ class UserChallenges extends Component {
             <Modal 
                 show={this.state.showModal}
                 hideModal={this.hideModalHandler}
-                modalType="white">
+                modalType="Modal_white">
                 <p>Have you finished this challenge?</p>
-                <Button size="small" colorType="white" clicked={this.addFinishedChallenge}>Yes</Button>
-                <Button size="small"  colorType="white" clicked={this.hideModalHandler}>No</Button>
+                <Button size="Button_small" colorType="Button_white" clicked={this.addFinishedChallenge}>Yes</Button>
+                <Button size="Button_small"  colorType="Button_white" clicked={this.hideModalHandler}>No</Button>
                     
             </Modal>
             <RandomActivityModal 
@@ -105,22 +105,22 @@ class UserChallenges extends Component {
                 hideModal={this.hideRandomChallengeModalHandler}
                 randomActivity={this.props.randomChallenge}
                 />
-            <div className={classes.UserContainer}>
-                <div className={classes.ChallengesContainer}>
-                    <p className={classes.Header}>Your challenges</p>
-                    <div className={classes.ActivitiesContainer}>
+            <div className='UserContainer'>
+                <div className='UserContainer-Box'>
+                    <p className='UserContainer-Header'>Your challenges</p>
+                    <div className='UserContainer-ActivityBox'>
                     {challenges}
                     <ActivityContainer 
-                        containerStyle="Activity" 
+                        containerStyle="ActivityContainer-Activity" 
                         colorStyle="greenOnGreen"
                         clicked={this.showRandomChallengeModalHandler}>
                         Add new challenge
                     </ActivityContainer>
                     </div>
                 </div>
-                <div className={classes.ChallengesContainer}>
-                    <p className={classes.Header}>Your achievements</p>
-                    <div className={classes.ActivitiesContainer}>
+                <div className='UserContainer-Box'>
+                    <p className='UserContainer-Header'>Your achievements</p>
+                    <div className='UserContainer-ActivityBox'>
                     {finishedChallenges}
                     </div>
                 </div>

@@ -1,10 +1,10 @@
-.notFound {
+.NotFound {
     height: 100vh;
     text-align: center;
     color: white;
     box-sizing: border-box;
 }
-.notFound p:hover {
+.NotFound p:hover {
     cursor: pointer;
     color: #13DFBA;
 }

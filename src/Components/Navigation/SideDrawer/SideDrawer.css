@@ -19,19 +19,19 @@
     }
 }
 
-.Open {
+.SideDrawer_open {
     transform: translateX(0);
 }
 
-.Close {
+.SideDrawer_close {
     transform: translateX(-100%);
 }
 
-.Logo {
+.SideDrawer-Logo {
     justify-content: center;
     display: flex;
 }
-.CloseButton {
+.SideDrawer-CloseButton {
     margin-top: 32px;
     display: flex;
     justify-content: center;

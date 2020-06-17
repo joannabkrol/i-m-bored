@@ -1,17 +1,17 @@
-.CategoryList {
+.ActivityList {
     display: flex;
     flex-wrap: wrap;
     margin: auto;
     justify-content: center;
 }
-.Header {
+.ActivityList-Header {
     text-align: center;
     font-size: 2rem;
     color: white;
 }
 
 @media (min-width: 500px) {
-    .CategoryList {
+    .ActivityList {
         display: flex;
         width: 70%;
         flex-wrap: wrap;
@@ -20,15 +20,7 @@
 }
 
 @media (min-width: 1500px) {
-    .CategoryList {
+    .ActivityList {
         flex-grow: 1;
     }
-}
-/*background shapes: */
-.GraphicLeft {
-    position: fixed;
-    z-index: -1;
-    left: 0;
-    bottom: 0;
-    width: 30%;
 }

@@ -17,24 +17,24 @@
 }
 
 /* colorType */
-.Button.white {
+.Button_white {
     background-color: white;
     border: 1px solid #0F2546;
     color: #0F2546;
 }
-.Button.green {
+.Button_green {
     background-color: #0F2546;
     border: 1px solid #13DFBA;
     color: white;
 }
-.Button.greenOnGreen {
+.Button_greenOnGreen {
     background-color: #0F2546;
     border: 1px solid #13DFBA;
     color: #13DFBA;
 }
 
 /* position*/
-.Button.center {
+.Button_center {
     margin: 20px auto;
     text-align: center;
     margin-top: 2%;
@@ -42,23 +42,23 @@
     width: 50%;
 }
 /*size*/
-.Button.smallLong {
+.Button_smallLong {
     width: 50%;
     height: 80px;
     padding: 1rem 0.5rem;
 }
-.Button.primary {
+.Button_primary {
     padding: 10% 2% 10% 2%;
     width:  150px;
     height: 200px;
     margin: 10px;
 
 }
-.Button.small {
+.Button_small {
     padding: 2% 10% 2% 10%;
 }
 @media (min-width: 500px) {
-    .Button.primary {
+    .Button_primary {
         width:  300px;
         height: 230px;
         margin: 10px;

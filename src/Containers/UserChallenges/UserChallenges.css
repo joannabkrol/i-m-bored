@@ -6,7 +6,7 @@
     height: 80%;
 }
 
-.ChallengesContainer {
+.UserContainer-Box {
     background-color: white;
     border-radius: 15px;
     text-align: center;
@@ -15,14 +15,14 @@
     margin-top: 3rem;
     margin-bottom: 2rem;
 }
-.ActivitiesContainer {
+.UserContainer-ActivityBox {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 2rem;
 }
 
-.Header {
+.UserContainer-Header {
     font-size: 2rem;
     color: #0F2546;
 }
@@ -31,7 +31,7 @@
         width: 70%;
     }
     
-    .ActivitiesContainer{
+    .UserContainer-ActivityBox{
         flex-direction: row;
         flex-wrap: wrap;
     }

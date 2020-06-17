@@ -1,8 +1,8 @@
 import React from 'react';
-import classes from './Logo.module.css';
+import './Logo.css';
 
 const logo = () => (
-    <div><p className={classes.logo}>I'M BORED</p></div>
+    <div><p className='Logo'>I'M BORED</p></div>
 );
 
 export default logo;

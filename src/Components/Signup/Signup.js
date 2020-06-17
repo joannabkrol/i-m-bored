@@ -6,7 +6,7 @@ import Spinner from '../../Components/UI/Spinner/Spinner';
 
 import Signin from '../../Containers/AuthLogIn/AuthLogIn';
 
-import classes from './Signup.module.css';
+import './Signup.css';
 import * as actions from '../../store/actions/index';
 import {connect} from 'react-redux';
 
@@ -132,7 +132,7 @@ class Auth extends Component {
         let errorMessage = null;
         if (this.props.error) {
             errorMessage = (
-                <div className={classes.ErrorMsg}><p>{this.props.error.message}</p></div>
+                <div className='Signup-ErrorMsg'><p>{this.props.error.message}</p></div>
             )
         }
  
@@ -141,12 +141,12 @@ class Auth extends Component {
             {this.state.switchToSignIn ? <Signin/> : 
             <React.Fragment>
             {errorMessage}
-            <div className={classes.Form}>
+            <div className='Signup-Form'>
                 <h2>SIGN UP</h2>
                 <form>
                     {formSignUp}
                     <Button 
-                        colorType="white" size="small" position="center"
+                        colorType="Button_white" size="Button_small" position="Button_center"
                         clicked={this.submitSignUpHandler}
                     >SUBMIT</Button>
                 </form>

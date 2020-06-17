@@ -6,7 +6,7 @@ import Input from '../../Components/UI/Input/Input';
 import Button from '../../Components/UI/Button/Button';
 import Spinner from '../../Components/UI/Spinner/Spinner';
 
-import classes from './AuthLogIn.module.css';
+import './AuthLogIn.css';
 import * as actions from '../../store/actions/index';
 
 
@@ -116,7 +116,7 @@ class Auth extends Component {
         let errorMessage = null;
         if (this.props.errorSignin) {
             errorMessage = (
-                <div className={classes.ErrorMsg}><p>{this.props.errorSignin.message}</p></div>
+                <div className='Auth-ErrorMsg'><p>{this.props.errorSignin.message}</p></div>
             )
         }
         let authRedirect = null;
@@ -130,13 +130,13 @@ class Auth extends Component {
                 {this.state.showSignup ? <SignUp/> : (
                     <React.Fragment>
                         {errorMessage}
-                        <div className={classes.Auth}>
-                            <div className={classes.Form}>
+                        <div className='Auth'>
+                            <div className='Auth-Form'>
                                 <h2>SIGN IN</h2>
                                 <form>
                                     {form}
                                     <Button 
-                                        colorType="white" size="small" position="center"
+                                        colorType="Button_white" size="Button_small" position="Button_center"
                                         clicked={this.submitSignInHandler}
                                     >SUBMIT</Button>
                                 </form>

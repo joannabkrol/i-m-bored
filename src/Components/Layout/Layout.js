@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Toolbar from '../Navigation/Toolbar';
-import classes from './Layout.module.css';
+import './Layout.css';
 import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 import Footer from '../Navigation/Footer/Footer';
 
@@ -33,7 +33,7 @@ class Layout extends Component {
                 <Toolbar 
                 isAuth={this.props.isAuthenticated}
                 toggleSideDrawer={this.toggleSideDrawerHandler}/>
-                <main className={classes.Content}>
+                <main className='Layout'>
                 {this.props.children}
                 </main>
                 <Footer/>

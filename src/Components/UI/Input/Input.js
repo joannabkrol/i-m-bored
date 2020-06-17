@@ -1,12 +1,12 @@
 import React from 'react';
-import classes from './Input.module.css';
+import './Input.css';
 
 const input = (props) => {
     let inputElement = null;
-    const inputClasses = [classes.InputElement];
+    const inputClasses = ['Form-Input'];
 
     if (props.invalid && props.shouldValidate && props.touched) {
-        inputClasses.push(classes.Invalid);
+        inputClasses.push('Form-Input_invalid');
     }
 
     switch (props.elementType) {
@@ -50,12 +50,12 @@ const input = (props) => {
 
     let validationError = null;
     if (props.invalid && props.touched) {
-        validationError = <p className={classes.ValidationError}>Please enter a valid {props.valueType}</p>;
+        validationError = <p className='Form-Input_validationError'>Please enter a valid {props.valueType}</p>;
     }
 
     return (
-        <div className={classes.Input}>
-            <label className={classes.Label}>{props.label}</label>
+        <div className='Form-ContainerInput'>
+            <label className='Form-Label'>{props.label}</label>
             {inputElement}
             {validationError}
         </div>

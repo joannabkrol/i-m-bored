@@ -24,10 +24,10 @@ class App extends Component {
   render() {
       let routes = (
         <Switch>
-            <Route path="/catalog" component={CategoriesLists}/>
-            <Route path="/signin" component={AuthLogIn}/>
-            <Route path="/signup" component={Signup}/>
-            <Route path="/logout" component={Logout}/>
+            <Route path="/catalog" exact component={CategoriesLists}/>
+            <Route path="/signin" exact component={AuthLogIn}/>
+            <Route path="/signup" exact component={Signup}/>
+            <Route path="/logout" exact component={Logout}/>
             <Route path="/" exact component={Home}/>
             <Route component={PageNotFound}/>
           </Switch>
@@ -35,11 +35,11 @@ class App extends Component {
       if (this.props.isAuthenticated) {
         routes = (
           <Switch>
-            <Route path="/catalog" component={CategoriesLists}/>
-            <Route path="/signin" component={AuthLogIn}/>
-            <Route path="/signup" component={Signup}/>
-            <Route path="/user" component={UserChallenges}/>
-            <Route path="/logout" component={Logout}/>
+            <Route path="/catalog" exact component={CategoriesLists}/>
+            <Route path="/signin" exact component={AuthLogIn}/>
+            <Route path="/signup" exact component={Signup}/>
+            <Route path="/user" exact component={UserChallenges}/>
+            <Route path="/logout" exact component={Logout}/>
             <Route path="/" exact component={Home}/>
             <Route component={PageNotFound}/>
           </Switch>

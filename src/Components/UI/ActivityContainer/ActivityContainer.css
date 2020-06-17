@@ -1,5 +1,5 @@
 
-.Container {
+.ActivityContainer {
     width:  160px;
     border-radius: 10px;
     text-align: center;
@@ -8,22 +8,22 @@
     margin: 2% 2% 4% 2%;
     cursor: pointer;
 }
-.Container.Activity {
+.ActivityContainer-Activity {
     height: 160px;
     font-size: 1.3rem;
 }
-.Container.Category {
+.ActivityContainer-Category {
     height: auto;
     font-size: 1.5rem;
 }
 @media (min-width: 500px) {
-    .Container.Activity {
+    .ActivityContainer-Activity {
         width:  200px;
         height: 200px;
         margin: 10px;
         padding: 10% 2% 10% 2%;
     }
-    .Container.Category {
+    .ActivityContainer-Category {
         width:  200px;
         height: auto;
         margin: 10px;

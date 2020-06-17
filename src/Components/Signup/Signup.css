@@ -1,21 +1,21 @@
-.Form {
+.Signup-Form {
     background-color: white;
     border-radius: 10px;
     width: 300px;
     margin: 1rem auto;
     padding-bottom: 1.5rem;
 }
-.Form h2 {
+.Signup-Form h2 {
     color: #0F2546;
     text-align: center;
     margin: 0;
     padding: 1rem;
 }
-.Input {
+.Signup-Input {
     display: block;
     margin: auto;
 }
-.ErrorMsg {
+.Signup-ErrorMsg {
     width: 300px;
     margin: 1rem auto;
     box-sizing: border-box;

@@ -5,7 +5,7 @@ import * as actions from '../../store/actions/index';
 
 import Button from '../../Components/UI/Button/Button';
 //import Spinner from '../../Components/UI/Spinner/Spinner';
-import classes from './Home.module.css';
+import './Home.css';
 
 import image from '../../assets/1x/boredwomen.png';
 
@@ -39,35 +39,35 @@ class Home extends Component {
                     hideModal={this.hideSuccessModalHandler}
                     randomActivity={this.props.randomChallenge}
                     />
-                <div className={classes.Conversation}>
-                    <div className={classes.introductionContainer}>
+                <div className='Container'>
+                    <div className='Container-Introduction'>
                         <div>
-                            <p className={classes.title}>I'M SO<br></br>BORED!</p>
-                            <p className={classes.description}>Then do something! Here you will find many challenges that may inspire you to start a new hobby or activity. <br></br>Take a challenge. <br></br>Join today!</p>
-                            <div className={classes.DesktopButtonsContainer}>
+                            <p className='Container-Title'>I'M SO<br></br>BORED!</p>
+                            <p className='Container-Description'>Then do something! Here you will find many challenges that may inspire you to start a new hobby or activity. <br></br>Take a challenge. <br></br>Join today!</p>
+                            <div className='Container-Btn_desktop'>
                                 <Button 
-                                size="small"
-                                colorType="green"
+                                size="Button_small"
+                                colorType="Button_green"
                                 clicked={this.showSuccessModalHandler}
                                 >Challenge for you</Button>
                                 <Button
-                                size="small"
-                                colorType="green"
+                                size="Button_small"
+                                colorType="Button_green"
                                 clicked={this.goToCatalogHandler}
                                 >Catalog of challenges</Button>
                             </div>
                         </div>
-                        <div className={classes.Image}><img src={image} width="90%" alt="Bored women looking at the phone"/></div>
+                        <div className='Container-Image'><img src={image} width="90%" alt="Bored women looking at the phone"/></div>
                     </div>
-                    <div className={classes.MobileButtonsContainer}>
+                    <div className='Container-Btn_mobile'>
                         <Button 
-                            size="smallLong"
-                            colorType="green"
+                            size="Button_smallLong"
+                            colorType="Button_green"
                             clicked={this.showSuccessModalHandler}
                             >Challenge for you</Button>
                         <Button
-                            size="smallLong"
-                            colorType="green"
+                            size="Button_smallLong"
+                            colorType="Button_green"
                             clicked={this.goToCatalogHandler}
                         >Catalog of challenges</Button>
                     </div> 

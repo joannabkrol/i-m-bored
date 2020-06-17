@@ -1,8 +1,8 @@
 import React from 'react';
-import classes from './Hamburger.module.css';
+import './Hamburger.css';
 
 const hamburger = (props) => (
-    <div className={classes.Hamburger} onClick={props.clicked}>
+    <div className='Hamburger' onClick={props.clicked}>
         <div></div>
         <div></div>
         <div></div>

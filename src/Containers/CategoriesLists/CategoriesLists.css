@@ -1,17 +1,17 @@
-.ActivityList {
+.Catalog-CategoryList {
     display: flex;
     flex-wrap: wrap;
     margin: auto;
     justify-content: center;
 }
-.Header {
+.Catalog-Header {
     text-align: center;
     font-size: 2rem;
     color: white;
 }
 
 @media (min-width: 500px) {
-    .ActivityList {
+    .Catalog-CategoryList {
         display: flex;
         width: 70%;
         flex-wrap: wrap;
@@ -20,7 +20,7 @@
 }
 
 @media (min-width: 1500px) {
-    .ActivityList {
+    .Catalog-CategoryList {
         flex-grow: 1;
     }
 }

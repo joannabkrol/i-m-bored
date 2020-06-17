@@ -1,4 +1,4 @@
-.modal {
+.Modal {
     width: 90%;
     height: 80%;
     margin: auto;
@@ -17,27 +17,27 @@
     box-sizing: border-box;
     font-size: 1.5rem;
 }
-.modal.red {
+.Modal_red {
     background-color: #DD355E;
     color: white;
 }
 
-.modal.white {
+.Modal_white {
     background-color: white;
     color: #0F2546;
 }
 @media (min-width: 500px) {
-    .modal {
+    .Modal {
         width: 70%
     }
 }
 @media (max-width: 350px) {
-    .modal {
+    .Modal {
         height: 95%;
     }
 }
 @media (min-width: 2000px) {
-    .modal {
+    .Modal {
         padding: 2%;
     }
 }

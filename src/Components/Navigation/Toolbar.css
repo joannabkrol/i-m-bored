@@ -1,4 +1,4 @@
-.Header {
+.Toolbar {
     position: fixed;
     top: 0;
     left: 0;
@@ -13,12 +13,10 @@
     font-size: 1.3rem;
     z-index: 50;
 }
-.Content {
-    margin-top: 80px;
-}
+
 
 @media (max-width: 500px) {
-    .DesktopOnly {
+    .Toolbar_desktopOnly {
         display: none;
     }
 }
