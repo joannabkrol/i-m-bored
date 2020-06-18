@@ -7,7 +7,9 @@ const initialState = {
     error: null,
     errorSignin: null,
     loadingSignin: false,
-    loadingSignup: false
+    loadingSignup: false,
+    errorResetPassword: null,
+    loadingResetPassword: null,
 };
 //SignIn:
 const authStartSignIn = (state, action) => {
@@ -47,6 +49,23 @@ const authFail = (state, action) => {
     } 
     );
 }
+//Reset password:
+const authStartResetPassword = (state, action) => {
+    return updatedObject(state, {errorResetPassword: null, loadingResetPassword: true} );
+}
+const authSuccessResetPassword = (state, action) => {
+    return updatedObject(state, {
+        loadingResetPassword: false, 
+        errorResetPassword: null
+    } );
+}
+const authFailResetPassword = (state, action) => {
+    return updatedObject(state, {
+        errorResetPassword: action.error,
+        loadingResetPassword: false
+    } 
+    );
+}
 
 //logout:
 const authLogout = (state, action) => {
@@ -70,6 +89,10 @@ const reducer = (state = initialState, action) => {
         case actionTypes.AUTH_FAIL: return authFail(state, action);
         case actionTypes.AUTH_LOGOUT: return authLogout(state, action);
         case actionTypes.SET_AUTH_REDIRECT_PATH: return setAuthRedirectPath(state, action);
+        case actionTypes.RESET_PASSWORD_START: return authStartResetPassword (state, action);
+        case actionTypes.RESET_PASSWORD_SUCCESS: return authSuccessResetPassword(state, action);
+        case actionTypes.RESET_PASSWORD_FAIL: return authFailResetPassword(state, action);
+
         default: return state;    
     }
 }

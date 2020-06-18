@@ -157,3 +157,42 @@ export const setAuthRedirectPath = (path) => {
         path: path
     }
 }
+
+//reset password:
+export const authStartResetPassword = () => {
+    return {
+        type: actionTypes.RESET_PASSWORD_START
+    }
+}
+
+export const authSuccessResetPassword = () => {
+    return {
+        type: actionTypes.RESET_PASSWORD_SUCCESS,
+    }
+}
+
+export const authFailResetPassword = (error) => {
+    return {
+        type: actionTypes.RESET_PASSWORD_FAIL,
+        error: error
+    }
+}
+export const authResetPassword = (email) => {
+    return dispatch => {
+        dispatch(authStartResetPassword());
+        let body = {
+            requestType: "PASSWORD_RESET",
+            email: email
+        }
+        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyDAIWd8gJ_GjMAJRF20teOHixvu9HHy6p4';
+        axios.post(url, body)
+        .then(response => {
+            console.log(response);
+            dispatch(authSuccessResetPassword());
+        })
+        .catch(err => {
+            console.log(err);
+            dispatch(authFailResetPassword(err.response.data.error));
+        })
+    }
+}

@@ -1,17 +1,12 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
 
 import Input from '../../Components/UI/Input/Input';
 import Button from '../../Components/UI/Button/Button';
 import Spinner from '../../Components/UI/Spinner/Spinner';
 
-import './AuthLogIn.css';
+import './ResetPassword.css';
 import * as actions from '../../store/actions/index';
-
-
-import SignUp from '../../Components/Signup/Signup';
-import ResetPassword from '../../Components/ResetPassword/ResetPassword';
+import {connect} from 'react-redux';
 
 class Auth extends Component {
     state = {
@@ -30,37 +25,20 @@ class Auth extends Component {
                 valid: true,
                 touched: false
             },
-            password: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'password',
-                    placeholder: 'Password'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                    minLength: 6
-                },
-                valid: false,
-                touched: false
-            },
         },
-        showSignup: false,
-        showResetPassword: false,
+        isPasswordReseted: false,
     }
     checkValidity(val, rules) {
         let isValid = true;
         if (!rules) {
             return true;
         }
-
         if (rules.required) {
             isValid = val.trim() !== '' && isValid;
         }
         if (rules.minLength) {
             isValid = val.length >= rules.minLength && isValid;
         }
-        //add a rule checking the email address
         if (rules.isEmail) {
             const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
             isValid = pattern.test(val) && isValid;
@@ -80,20 +58,17 @@ class Auth extends Component {
         }
         this.setState({controls: updatedControls});
     }
-
-    submitSignInHandler = (event) => {
+    submitSignUpHandler = (event) => {
         event.preventDefault();
-        //here will be redux dispatch method
-        this.props.onAuthSignIn(this.state.controls.mail.value, this.state.controls.password.value, this.state.isSignup);
+        this.props.onAuthResetPassword(this.state.controls.mail.value);
+        if (!this.props.error) {
+            this.setState({isPasswordReseted: true})
+        }
     }
-
-    showSignupHandler = () => {
-        this.setState({showSignup: true})
+    goBackToSignin = () => {
+        window.location.reload();
     }
-    showResetPasswordHandler = () => {
-        this.setState({showResetPassword: true})
-    }
-
+    
     render(){
         const formElementsArray = [];
         for(let key in this.state.controls) {
@@ -102,7 +77,8 @@ class Auth extends Component {
                 config: this.state.controls[key]
             });
         }
-        let form = formElementsArray.map(formElement => (
+        let formReset = formElementsArray.map(formElement => (
+
             <Input
                 key={formElement.id}
                 elementType={formElement.config.elementType}
@@ -116,62 +92,55 @@ class Auth extends Component {
             />
         ))
         if (this.props.loading) {
-            form = <Spinner/>
+            formReset = <Spinner/>
         }
         let errorMessage = null;
-        if (this.props.errorSignin) {
+        if (this.props.error) {
             errorMessage = (
-                <div className='Auth-ErrorMsg'><p>{this.props.errorSignin.message}</p></div>
+                <div className='Signup-ErrorMsg'><p>{this.props.error.message}</p></div>
             )
         }
-        let authRedirect = null;
-        if (this.props.isAuth) {
-            authRedirect = <Redirect to="/user" />
-        }
-
-        let auth = (this.state.showSignup ? <SignUp/> : (
+        
+        let resetPasswordForm = (
             <React.Fragment>
-                {errorMessage}
-                <div className='Auth'>
-                    <div className='Auth-Form'>
-                        <h2>SIGN IN</h2>
-                        <form>
-                            {form}
-                            <Button 
-                                colorType="Button_white" size="Button_small" position="Button_center"
-                                clicked={this.submitSignInHandler}
-                            >SUBMIT</Button>
-                        </form>
-                        <p onClick={this.showSignupHandler} style={{textAlign: "center", color: "#13DFBA", cursor: "pointer"}}> Click here to Sign up </p>
-                        <p onClick={this.showResetPasswordHandler} style={{textAlign: "center", color: "#13DFBA", cursor: "pointer"}}> Click here to reset password </p>
-                    </div>
-                </div>
-            </React.Fragment>
-        ));
-        if (this.state.showResetPassword) {
-            auth = <ResetPassword/>
+                <h2>RESET PASSWORD</h2>
+                <form>
+                    {formReset}
+                    <Button 
+                        colorType="Button_white" size="Button_small" position="Button_center"
+                        clicked={this.submitSignUpHandler}
+                    >SUBMIT</Button>
+                </form>
+            </React.Fragment>);
+        
+        if (this.state.isPasswordReseted) {
+        resetPasswordForm = this.state.isPasswordReseted && (
+            <div className="ResetPassword-SuccessContainer">
+                <h2>Link to change the password has been sent to your email</h2>  
+            </div>);
         }
 
-        return(<React.Fragment>
-                {authRedirect}
-                
-                {auth}
-                
-            </React.Fragment>
+
+        return (
+        <div style={{height: "80vh"}}>
+            {errorMessage}
+            <div className='Signup-Form'>
+                {resetPasswordForm}
+                <p className="ResetPassword-Text_green" onClick={this.goBackToSignin}>Click here to Signin</p>    
+            </div>
+        </div>
         );
     }
 }
 const mapStateToProps = state => {
     return {
-        loading: state.auth.loadingSignin,
-        errorSignin: state.auth.errorSignin,
-        isAuth: state.auth.token !== null,
+        loading: state.auth.loadingResetPassword,
+        error: state.auth.errorResetPassword
     }
 }
-
 const mapDispatchToProps = dispatch => {
     return {
-        onAuthSignIn: (email, password) => dispatch(actions.authSignIn(email, password)),
+        onAuthResetPassword: (email) => dispatch(actions.authResetPassword(email)),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Auth);
