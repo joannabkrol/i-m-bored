@@ -15,7 +15,7 @@ class RandomActivity extends Component {
         event.preventDefault();
         const challengeData = {
             userId: this.props.userId,
-            activity: this.props.randomActivity.label,
+            activity: this.props.randomChallenge.label,
         }
         if (this.props.isAuthenticated) {
             this.props.onAddChallenge(challengeData, this.props.token);
@@ -26,7 +26,8 @@ class RandomActivity extends Component {
         
     }
     reloadPage = () => {
-        window.location.reload();
+        //window.location.reload();
+        this.props.onGenerateRandomChallenge();
     }
 
     goToCatalogHandler = () => {
@@ -45,7 +46,7 @@ class RandomActivity extends Component {
                     modalType="Modal_white"
                     >
                     Your challenge is: <br></br><br></br>
-                    <p><strong>{this.props.randomActivity.label}
+                    <p><strong>{this.props.randomChallenge.label}
                     
                     </strong></p><br></br>
                     <p style={{fontSize: '1rem'}}>Tag us on social media:<br></br>
@@ -68,12 +69,14 @@ const mapStateToProps = state => {
         token: state.auth.token,
         userId: state.auth.userId,
         loading: state.challenge.loading,
+        randomChallenge: state.randomChallenge.randomChallenge,
     }
 }
 const mapDispatchToProps = dispatch => {
     return {
         onAddChallenge: (challengeData, token) => dispatch(actions.addChallenge(challengeData, token)),
-        onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path))
+        onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path)),
+        onGenerateRandomChallenge: () => dispatch(actions.generateRandomChallenge())
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(RandomActivity);

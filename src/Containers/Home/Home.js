@@ -37,7 +37,7 @@ class Home extends Component {
             <React.Fragment>
                 <RandomActivityModal show={this.state.showSuccessModal}
                     hideModal={this.hideSuccessModalHandler}
-                    randomActivity={this.props.randomChallenge}
+                    //randomActivity={this.props.randomChallenge}
                     />
                 <div className='Container'>
                     <div className='Container-Introduction'>
