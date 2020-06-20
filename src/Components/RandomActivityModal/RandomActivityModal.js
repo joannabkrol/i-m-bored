@@ -35,7 +35,7 @@ class RandomActivity extends Component {
 
     render() {
         let addChallenge = <Button size="Button_small" colorType="Button_white" clicked={this.addChallengeHandler}>
-        {this.props.isAuthenticated ? "Add to your challenges" : "Sign in to add the challenge"}
+        {this.props.isAuthenticated ? "Add to your challenges" : "Sign in to see more options"}
         </Button>;
         
         return (
