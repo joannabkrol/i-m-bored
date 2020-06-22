@@ -15,8 +15,16 @@ import RandomActivityModal from '../../Components/RandomActivityModal/RandomActi
 class Home extends Component {
     state = {
         showSuccessModal: false,
+        isMobile: false
     }
-    
+    componentDidMount() {
+        window.addEventListener('resize', () => {
+            this.setState({
+                isMobile: window.innerWidth < 800
+            });
+        }, false);
+    }
+
     showSuccessModalHandler = () => {
         this.setState({
             showSuccessModal: true,
@@ -33,25 +41,26 @@ class Home extends Component {
     }
 
     render () {
+        const containerClasses = this.state.isMobile ? 'Container-Btn_mobile' : 'Container-Btn_desktop';
+        const buttonSizeClasses = this.state.isMobile ? 'Button_smallLong' : 'Button_small';
         return (
             <React.Fragment>
                 <RandomActivityModal show={this.state.showSuccessModal}
                     hideModal={this.hideSuccessModalHandler}
-                    //randomActivity={this.props.randomChallenge}
                     />
                 <div className='Container'>
                     <div className='Container-Introduction'>
                         <div>
                             <p className='Container-Title'>I'M SO<br></br>BORED!</p>
                             <p className='Container-Description'>Then do something! Here you will find many challenges that may inspire you to start a new hobby or activity. <br></br>Take a challenge. <br></br>Join today!</p>
-                            <div className='Container-Btn_desktop'>
+                            <div className={containerClasses}>
                                 <Button 
-                                size="Button_small"
+                                size={buttonSizeClasses}
                                 colorType="Button_green"
                                 clicked={this.showSuccessModalHandler}
                                 >Challenge for you</Button>
                                 <Button
-                                size="Button_small"
+                                size={buttonSizeClasses}
                                 colorType="Button_green"
                                 clicked={this.goToCatalogHandler}
                                 >Catalog of challenges</Button>
@@ -59,18 +68,6 @@ class Home extends Component {
                         </div>
                         <div className='Container-Image'><img src={image} width="90%" alt="Bored women looking at the phone"/></div>
                     </div>
-                    <div className='Container-Btn_mobile'>
-                        <Button 
-                            size="Button_smallLong"
-                            colorType="Button_green"
-                            clicked={this.showSuccessModalHandler}
-                            >Challenge for you</Button>
-                        <Button
-                            size="Button_smallLong"
-                            colorType="Button_green"
-                            clicked={this.goToCatalogHandler}
-                        >Catalog of challenges</Button>
-                    </div> 
                  </div>
             </React.Fragment>
         )

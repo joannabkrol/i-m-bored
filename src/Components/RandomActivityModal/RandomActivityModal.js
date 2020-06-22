@@ -8,8 +8,6 @@ import * as actions from '../../store/actions/index';
 
 
 class RandomActivity extends Component {
-    state = {
-    }
 
     addChallengeHandler = (event) => {
         event.preventDefault();
