@@ -1,6 +1,6 @@
 .Modal {
     width: 90%;
-    height: 80%;
+    height: fit-content;
     margin: auto;
     position: fixed;
     z-index: 200;
@@ -39,5 +39,11 @@
 @media (min-width: 2000px) {
     .Modal {
         padding: 2%;
+    }
+}
+@media (max-height: 700px) {
+    .Modal {
+        height: 100vh;
+        overflow-y: scroll;
     }
 }

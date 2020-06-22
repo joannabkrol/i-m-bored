@@ -40,7 +40,7 @@ class RandomActivity extends Component {
         </Button>;
         
         return (
-                <Modal
+                <Modal style={{overflowY: "scroll"}}
                     show={this.props.show}
                     hideModal={this.props.hideModal}
                     modalType="Modal_white"
