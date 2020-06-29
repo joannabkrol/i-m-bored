@@ -8,6 +8,8 @@ import './ResetPassword.css';
 import * as actions from '../../store/actions/index';
 import {connect} from 'react-redux';
 
+import {Validation} from '../Utilities/Validation/Validation';
+
 class Auth extends Component {
     state = {
         controls: {
@@ -29,31 +31,13 @@ class Auth extends Component {
         isPasswordReset: "notReseted"
     }
 
-    checkValidity(val, rules) {
-        let isValid = true;
-        if (!rules) {
-            return true;
-        }
-        if (rules.required) {
-            isValid = val.trim() !== '' && isValid;
-        }
-        if (rules.minLength) {
-            isValid = val.length >= rules.minLength && isValid;
-        }
-        if (rules.isEmail) {
-            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-            isValid = pattern.test(val) && isValid;
-        }
-        return isValid;
-    }
-
     inputChangedHandler = (event, controlName) => {
         const updatedControls = {
             ...this.state.controls,
             [controlName]: {
                 ...this.state.controls[controlName],
                 value: event.target.value,
-                valid: this.checkValidity(event.target.value, this.state.controls[controlName].validation),
+                valid: Validation(event.target.value, this.state.controls[controlName].validation),
                 touched: true
             }
         }
@@ -117,7 +101,6 @@ class Auth extends Component {
         return (
         <div style={{height: "80vh"}}>
             {errorMessage}
-            
             <div className='Signup-Form'>
             {switchView()}
                 <p className="ResetPassword-Text_green" onClick={this.goBackToSignin}>Click here to Signin</p>    
