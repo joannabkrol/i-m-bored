@@ -51,7 +51,7 @@ class Auth extends Component {
         showResetPassword: false,
     }
 
-    inputChangedHandler = (event, controlName) => {
+    onChange = (event, controlName) => {
         const updatedControls = {
             ...this.state.controls,
             [controlName]: {
@@ -95,7 +95,7 @@ class Auth extends Component {
                 shouldValidate={formElement.config.validation}
                 touched={formElement.config.touched}
                 valueType={formElement.id.toUpperCase()}
-                changed={(event) =>this.inputChangedHandler(event, formElement.id)}
+                changed={(event) =>this.onChange(event, formElement.id)}
             />
         ))
         if (this.props.loading) {

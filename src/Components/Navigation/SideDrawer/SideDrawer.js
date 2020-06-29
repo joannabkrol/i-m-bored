@@ -6,15 +6,10 @@ import Button from '../../UI/Button/Button';
 import Logo from '../Logo/Logo';
 
 const sideDrawer = (props) => {
-    let activeClasses = ['SideDrawer', 'SideDrawer_close'];
-    if (props.open) {
-        activeClasses = ['SideDrawer', 'SideDrawer-open'];
-    }
-
     return (
         <React.Fragment>
         <Backdrop show={props.open} clicked={props.close}/>
-            <div className={activeClasses.join(' ')}>
+            <div className={`SideDrawer SideDrawer_${props.open ? "open" : "close"}`}>
                 <div className='SideDrawer-Logo'><Logo/></div>
                 <nav>
                     <NavigationItems clicked={props.close}

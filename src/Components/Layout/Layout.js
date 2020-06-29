@@ -16,10 +16,8 @@ class Layout extends Component {
             showSideDrawer: false
         })
     }
-    toggleSideDrawerHandler = (prevState) => {
-        this.setState((prevState) => {
-            return {showSideDrawer: !prevState.showSideDrawer}
-        })
+    toggleSideDrawerHandler = () => {
+        this.setState({showSideDrawer: !this.state.showSideDrawer})
     }
 
     render () {
@@ -31,11 +29,12 @@ class Layout extends Component {
                     close={this.sideDrawerCloseHandler}
                 />
                 <Toolbar 
-                isAuth={this.props.isAuthenticated}
-                toggleSideDrawer={this.toggleSideDrawerHandler}/>
-                <main className='Layout'>
-                {this.props.children}
-                </main>
+                    isAuth={this.props.isAuthenticated}
+                    toggleSideDrawer={this.toggleSideDrawerHandler}/>
+                    <main className='Layout'
+                    >
+                    {this.props.children}
+                    </main>
                 <Footer/>
             </React.Fragment>
         )

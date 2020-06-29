@@ -30,8 +30,9 @@ class Auth extends Component {
         },
         isPasswordReset: "notReseted"
     }
-
-    inputChangedHandler = (event, controlName) => {
+    
+    
+    onChange = (event, controlName) => {
         const updatedControls = {
             ...this.state.controls,
             [controlName]: {
@@ -64,7 +65,7 @@ class Auth extends Component {
                 invalid={!this.state.controls.mail.valid}
                 shouldValidate={this.state.controls.mail.validation}
                 touched={this.state.controls.mail.touched}  
-                changed={(event) =>this.inputChangedHandler(event, "mail")}
+                changed={(event) =>this.onChange(event, "mail")}
             />)
 
         if (this.props.loading) {

@@ -2,7 +2,7 @@ import React from 'react';
 import './Logo.css';
 
 const logo = () => (
-    <div><p className='Logo'>I'M BORED</p></div>
+    <div><header className='Logo'>I'M BORED</header></div>
 );
 
 export default logo;

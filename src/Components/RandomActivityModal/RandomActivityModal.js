@@ -23,8 +23,7 @@ class RandomActivity extends Component {
         }
         
     }
-    reloadPage = () => {
-        //window.location.reload();
+    getRandomChallenge = () => {
         this.props.onGenerateRandomChallenge();
     }
 
@@ -32,11 +31,7 @@ class RandomActivity extends Component {
         window.location.href = '/catalog'
     }
 
-    render() {
-        let addChallenge = <Button size="Button_small" colorType="Button_white" buttonType="Button" clicked={this.addChallengeHandler}>
-        {this.props.isAuthenticated ? "Add to your challenges" : "Sign in to see more options"}
-        </Button>;
-        
+    render() {        
         return (
                 <Modal style={{overflowY: "scroll"}}
                     show={this.props.show}
@@ -52,9 +47,11 @@ class RandomActivity extends Component {
                     Share your challenge at: <br></br>
                     Facebook, Instagram, Twitter or wherever you like</p>
                     <div style={{display: 'flex', flexDirection: "column", marginTop: '30px'}}>
-                    {addChallenge}
+                    <Button size="Button_small" colorType="Button_white" buttonType="Button" clicked={this.addChallengeHandler}>
+                    {this.props.isAuthenticated ? "Add to your challenges" : "Sign in to see more options"}
+                    </Button>
                     <Button size="Button_small" colorType="Button_white"  buttonType="Button" clicked={this.goToCatalogHandler}>Go to Catalog</Button>
-                    <Button size="Button_small"  colorType="Button_white"  buttonType="Button" clicked={this.reloadPage}>Try again</Button>
+                    <Button size="Button_small"  colorType="Button_white"  buttonType="Button" clicked={this.getRandomChallenge}>Try again</Button>
                     </div>
 
                 </Modal>
