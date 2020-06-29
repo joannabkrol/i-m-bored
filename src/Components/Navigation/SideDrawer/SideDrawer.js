@@ -2,7 +2,7 @@ import React from 'react';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import './SideDrawer.css';
 import Backdrop from '../../UI/Backdrop/Backdrop';
-import CloseButton from '../../UI/CloseButton/CloseButton';
+import Button from '../../UI/Button/Button';
 import Logo from '../Logo/Logo';
 
 const sideDrawer = (props) => {
@@ -22,7 +22,7 @@ const sideDrawer = (props) => {
                     />
                 </nav>
                 <div className='SideDrawer-CloseButton'>
-                <CloseButton clicked={props.close}/>
+                <Button buttonType="CloseButton" clicked={props.close}/>
                 </div>
                 
             </div>

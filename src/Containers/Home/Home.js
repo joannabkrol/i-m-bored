@@ -58,11 +58,13 @@ class Home extends Component {
                                 size={buttonSizeClasses}
                                 colorType="Button_green"
                                 clicked={this.showSuccessModalHandler}
+                                buttonType="Button"
                                 >Challenge for you</Button>
                                 <Button
                                 size={buttonSizeClasses}
                                 colorType="Button_green"
                                 clicked={this.goToCatalogHandler}
+                                buttonType="Button"
                                 >Catalog of challenges</Button>
                             </div>
                         </div>

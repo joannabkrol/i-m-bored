@@ -32,7 +32,7 @@ class CategoriesList extends Component {
         return (
             <React.Fragment>
                 <div className='Catalog-Header'>Welcome to the biggest catalog of <br></br>activities of all kinds</div>
-                <Button position="Button_center" size="Button_smallLong" colorType="Button_greenOnGreen" clicked={this.handleSelectAll}>See all</Button>
+                <Button position="Button_center" size="Button_smallLong" colorType="Button_greenOnGreen"  buttonType="Button" clicked={this.handleSelectAll}>See all</Button>
                 <p className='Catalog-Header'>Or borwse by category:</p>
                 <div className='Catalog-CategoryList'>
                 {categories.map((cat, i) => (

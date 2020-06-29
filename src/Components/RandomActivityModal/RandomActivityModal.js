@@ -33,7 +33,7 @@ class RandomActivity extends Component {
     }
 
     render() {
-        let addChallenge = <Button size="Button_small" colorType="Button_white" clicked={this.addChallengeHandler}>
+        let addChallenge = <Button size="Button_small" colorType="Button_white" buttonType="Button" clicked={this.addChallengeHandler}>
         {this.props.isAuthenticated ? "Add to your challenges" : "Sign in to see more options"}
         </Button>;
         
@@ -53,8 +53,8 @@ class RandomActivity extends Component {
                     Facebook, Instagram, Twitter or wherever you like</p>
                     <div style={{display: 'flex', flexDirection: "column", marginTop: '30px'}}>
                     {addChallenge}
-                    <Button size="Button_small" colorType="Button_white" clicked={this.goToCatalogHandler}>Go to Catalog</Button>
-                    <Button size="Button_small"  colorType="Button_white" clicked={this.reloadPage}>Try again</Button>
+                    <Button size="Button_small" colorType="Button_white"  buttonType="Button" clicked={this.goToCatalogHandler}>Go to Catalog</Button>
+                    <Button size="Button_small"  colorType="Button_white"  buttonType="Button" clicked={this.reloadPage}>Try again</Button>
                     </div>
 
                 </Modal>

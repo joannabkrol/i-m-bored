@@ -70,27 +70,17 @@ class Auth extends Component {
     }
     
     render(){
-        const formElementsArray = [];
-        for(let key in this.state.controls) {
-            formElementsArray.push({
-                id: key,
-                config: this.state.controls[key]
-            });
-        }
-        let formReset = formElementsArray.map(formElement => (
-
+        let formReset = (
             <Input
-                key={formElement.id}
-                elementType={formElement.config.elementType}
-                elementConfig={formElement.config.elementConfig}
-                value={formElement.config.value}
-                invalid={!formElement.config.valid}
-                shouldValidate={formElement.config.validation}
-                touched={formElement.config.touched}
-                valueType={formElement.id.toUpperCase()}
-                changed={(event) =>this.inputChangedHandler(event, formElement.id)}
-            />
-        ))
+                elementType={this.state.controls.mail.elementType}
+                elementConfig={this.state.controls.mail.elementConfig}
+                value={this.state.controls.mail.value}
+                invalid={!this.state.controls.mail.valid}
+                shouldValidate={this.state.controls.mail.validation}
+                touched={this.state.controls.mail.touched}  
+                changed={(event) =>this.inputChangedHandler(event, "mail")}
+            />)
+
         if (this.props.loading) {
             formReset = <Spinner/>
         }
@@ -107,13 +97,13 @@ class Auth extends Component {
                 <form>
                     {formReset}
                     <Button 
-                        colorType="Button_white" size="Button_small" position="Button_center"
+                        colorType="Button_white" size="Button_small" position="Button_center"  buttonType="Button"
                         clicked={this.submitSignUpHandler}
                     >SUBMIT</Button>
                 </form>
             </React.Fragment>);
         
-        if (this.state.isPasswordReseted) {
+        if (this.state.isPasswordReseted && errorMessage === null) {
         resetPasswordForm = this.state.isPasswordReseted && (
             <div className="ResetPassword-SuccessContainer">
                 <h2>Link to change the password has been sent to your email</h2>  

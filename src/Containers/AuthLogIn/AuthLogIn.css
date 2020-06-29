@@ -24,6 +24,10 @@
     border-radius: 10px;
     padding-bottom: 1.5rem;
 }
+form {
+    display: flex;
+    flex-direction: column;
+}
 .Auth-Form h2 {
     color: #0F2546;
     text-align: center;

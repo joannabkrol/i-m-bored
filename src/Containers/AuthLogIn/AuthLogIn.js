@@ -138,7 +138,7 @@ class Auth extends Component {
                         <form>
                             {form}
                             <Button 
-                                colorType="Button_white" size="Button_small" position="Button_center"
+                                colorType="Button_white" size="Button_small" position="Button_center"  buttonType="Button"
                                 clicked={this.submitSignInHandler}
                             >SUBMIT</Button>
                         </form>

@@ -96,8 +96,8 @@ class UserChallenges extends Component {
                 hideModal={this.hideModalHandler}
                 modalType="Modal_white">
                 <p>Have you finished this challenge?</p>
-                <Button size="Button_small" colorType="Button_white" clicked={this.addFinishedChallenge}>Yes</Button>
-                <Button size="Button_small"  colorType="Button_white" clicked={this.hideModalHandler}>No</Button>
+                <Button size="Button_small" colorType="Button_white"   buttonType="Button" clicked={this.addFinishedChallenge}>Yes</Button>
+                <Button size="Button_small"  colorType="Button_white" buttonType="Button"  clicked={this.hideModalHandler}>No</Button>
                     
             </Modal>
             <RandomActivityModal 
