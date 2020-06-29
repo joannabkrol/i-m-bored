@@ -26,8 +26,9 @@ class Auth extends Component {
                 touched: false
             },
         },
-        isPasswordReseted: false,
+        isPasswordReset: "notReseted"
     }
+
     checkValidity(val, rules) {
         let isValid = true;
         if (!rules) {
@@ -59,10 +60,11 @@ class Auth extends Component {
         this.setState({controls: updatedControls});
     }
     submitSignUpHandler = (event) => {
+        console.log(this.props.error)
         event.preventDefault();
         this.props.onAuthResetPassword(this.state.controls.mail.value);
         if (!this.props.error) {
-            this.setState({isPasswordReseted: true})
+            this.setState({ isPasswordReset: "reseted"})
         }
     }
     goBackToSignin = () => {
@@ -70,7 +72,7 @@ class Auth extends Component {
     }
     
     render(){
-        let formReset = (
+        let formElements = (
             <Input
                 elementType={this.state.controls.mail.elementType}
                 elementConfig={this.state.controls.mail.elementConfig}
@@ -82,40 +84,42 @@ class Auth extends Component {
             />)
 
         if (this.props.loading) {
-            formReset = <Spinner/>
+            formElements = <Spinner/>
         }
-        let errorMessage = null;
-        if (this.props.error) {
-            errorMessage = (
-                <div className='Signup-ErrorMsg'><p>{this.props.error.message}</p></div>
-            )
-        }
+        let errorMessage = this.props.error && (<div className='Signup-ErrorMsg'><p>{this.props.error.message}</p></div>);
         
-        let resetPasswordForm = (
-            <React.Fragment>
-                <h2>RESET PASSWORD</h2>
-                <form>
-                    {formReset}
-                    <Button 
-                        colorType="Button_white" size="Button_small" position="Button_center"  buttonType="Button"
-                        clicked={this.submitSignUpHandler}
-                    >SUBMIT</Button>
-                </form>
-            </React.Fragment>);
-        
-        if (this.state.isPasswordReseted && errorMessage === null) {
-        resetPasswordForm = this.state.isPasswordReseted && (
-            <div className="ResetPassword-SuccessContainer">
-                <h2>Link to change the password has been sent to your email</h2>  
-            </div>);
-        }
+        let formReset = <React.Fragment>
+        <h2>RESET PASSWORD</h2>
+        <form>
+            {formElements}
+            <Button 
+                colorType="Button_white" size="Button_small" position="Button_center"  buttonType="Button"
+                clicked={this.submitSignUpHandler}
+            >SUBMIT</Button>
+        </form>
+    </React.Fragment>;
 
+        let formSuccessReset = <div className="ResetPassword-SuccessContainer">
+        <h2>Link to change the password has been sent to your email</h2>  
+    </div>;
+
+        const switchView = () => {
+            switch(this.state.isPasswordReset) {
+                case "reseted":
+                    return this.props.error === null ? formSuccessReset : formReset;
+                case "notReseted":
+                    return formReset;
+                default:
+                    return formReset;
+            }
+        }
 
         return (
         <div style={{height: "80vh"}}>
             {errorMessage}
+            
             <div className='Signup-Form'>
-                {resetPasswordForm}
+            {switchView()}
                 <p className="ResetPassword-Text_green" onClick={this.goBackToSignin}>Click here to Signin</p>    
             </div>
         </div>
