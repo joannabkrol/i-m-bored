@@ -1,44 +1,43 @@
 .Auth {
-    width: 300px;
-    margin: 1rem auto;
-    box-sizing: border-box;
-    display: fixed;
-    left: 0;
-    right: 0;
-    height: 80vh;
+  width: 300px;
+  margin: 1rem auto;
+  box-sizing: border-box;
+  display: fixed;
+  left: 0;
+  right: 0;
+  height: 80vh;
 }
 .Auth-ErrorMsg {
-    width: 300px;
-    margin: 1rem auto;
-    box-sizing: border-box;
-    background-color: white;
-    border-radius: 10px;
-    padding: 1rem;
-    color: #dd355e;
-    left: 0;
-    right: 0;
-    display: fixed;
+  width: 300px;
+  margin: 1rem auto;
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1rem;
+  color: #dd355e;
+  left: 0;
+  right: 0;
+  display: fixed;
 }
 .Auth-Form {
-    background-color: white;
-    border-radius: 10px;
-    padding-bottom: 1.5rem;
+  background-color: white;
+  border-radius: 10px;
+  padding-bottom: 1.5rem;
 }
 form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .Auth-Form h2 {
-    color: #0F2546;
-    text-align: center;
-    margin: 0;
-    padding: 1rem;
+  color: #0f2546;
+  text-align: center;
+  margin: 0;
+  padding: 1rem;
 }
 .Auth-Input {
-    display: block;
-    margin: auto;
+  display: block;
+  margin: auto;
 }
 
 @media (min-width: 600px) {
-
 }
